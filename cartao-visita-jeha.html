@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartão de Visita — jeha. by Cris Jeha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,400;1,9..144,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+        :root {
+            --verde: #6F7B52;
+            --rosa: #D8A8A8;
+            --creme: #FAF4F0;
+            --escuro: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #e8e0d8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            gap: 40px;
+        }
+
+        .page-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #888;
+            text-align: center;
+        }
+
+        /* === CARTÃO === */
+        /* 5cm x 9cm a 96dpi: 5*37.8=189px x 9*37.8=340px */
+        /* Escala 2.5x para visualização: 472px x 850px */
+        .card-set {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card-wrap {
+            text-align: center;
+        }
+
+        .card-wrap .label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            width: 320px;
+            height: 576px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.18);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        /* FRENTE */
+        .card-front {
+            background: var(--creme);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 22px 22px;
+        }
+
+        .card-front .top {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .card-front .logo {
+            width: 140px;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 8px;
+        }
+
+        .card-front .divider-line {
+            width: 28px;
+            height: 1.5px;
+            background: var(--rosa);
+            margin: 6px auto 10px;
+        }
+
+        .card-front .nome {
+            font-family: 'Fraunces', serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: var(--escuro);
+            letter-spacing: 0.02em;
+            margin-bottom: 3px;
+        }
+
+        .card-front .cargo {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--verde);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .card-front .middle {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            width: 100%;
+        }
+
+        .card-front .qr-box {
+            background: #fff;
+            border-radius: 6px;
+            padding: 6px;
+            border: 1px solid #e8e0d8;
+        }
+
+        .card-front .qr-box img {
+            display: block;
+            width: 180px;
+            height: 180px;
+        }
+
+        .card-front .scan-txt {
+            font-size: 8.5px;
+            color: #999;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .card-front .bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            width: 100%;
+        }
+
+        .card-front .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 11px;
+            color: var(--escuro);
+            font-weight: 500;
+        }
+
+        .card-front .contact-row .icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            flex-shrink: 0;
+        }
+
+        .card-front .contact-row .icon.wpp {
+            background: #25D366;
+            color: #fff;
+        }
+
+        .card-front .contact-row .icon.web {
+            background: var(--verde);
+            color: #fff;
+        }
+
+        .card-front .contact-row .icon.insta {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: #fff;
+        }
+
+        /* VERSO */
+        .card-back {
+            background: var(--verde);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 24px 18px;
+        }
+
+        .card-back .logo-back {
+            width: 150px;
+            height: auto;
+            filter: brightness(0) invert(1);
+            object-fit: contain;
+        }
+
+        .card-back .tagline {
+            font-family: 'Fraunces', serif;
+            font-size: 10.5px;
+            font-style: italic;
+            font-weight: 300;
+            color: rgba(255,255,255,0.85);
+            text-align: center;
+            letter-spacing: 0.04em;
+            line-height: 1.7;
+        }
+
+        .card-back .divider-back {
+            width: 24px;
+            height: 1px;
+            background: rgba(255,255,255,0.3);
+        }
+
+        .card-back .badge-back {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 100px;
+            padding: 5px 16px;
+            font-size: 8px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .card-back .dot-decor {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* PRINT */
+        @media print {
+            body {
+                background: #fff !important;
+                padding: 10mm;
+                display: block;
+            }
+
+            .no-print { display: none !important; }
+
+            .page-label { display: none; }
+
+            .card-set {
+                display: flex;
+                gap: 8mm;
+                justify-content: center;
+                page-break-inside: avoid;
+            }
+
+            .card-wrap .label { display: none; }
+
+            .card {
+                transform: none !important;
+                transform-origin: unset !important;
+                width: 50mm;
+                height: 90mm;
+                margin-bottom: 0 !important;
+                border-radius: 3mm;
+                box-shadow: none;
+                border: 0.5pt solid #ddd;
+            }
+
+            .card-front .logo { width: 30mm; }
+            .card-front .nome { font-size: 2.5mm; }
+            .card-front .cargo { font-size: 1.8mm; }
+            .card-front .contact-row { font-size: 2mm; }
+            .card-front .qr-box img { width: 18mm; height: 18mm; }
+            .card-front .scan-txt { font-size: 1.5mm; }
+            .card-back .logo-back { width: 28mm; }
+            .card-back .tagline { font-size: 2mm; }
+            .card-back .badge-back { font-size: 1.6mm; }
+        }
+
+        /* Botão */
+        .print-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: var(--verde);
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 100px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(111,123,82,0.35);
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(111,123,82,0.45);
+        }
+
+        .print-hint {
+            font-size: 0.68rem;
+            color: #aaa;
+            text-align: center;
+            margin-top: -16px;
+        }
+    </style>
+</head>
+<body>
+
+<p class="page-label">🌿 Cartão de Visita jeha. — 5 × 9 cm — Frente & Verso</p>
+
+<div class="card-set">
+
+    <!-- FRENTE -->
+    <div class="card-wrap">
+        <div class="label">Frente</div>
+        <div class="card card-front">
+            <div class="top">
+                <img class="logo" src="jeha-logo.png" alt="jeha. logo">
+                <div class="divider-line"></div>
+                <p class="nome">Cris Jeha</p>
+                <p class="cargo">Confeitaria Artesanal &amp; Funcional</p>
+            </div>
+
+            <div class="middle">
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=6&color=2d2d2d&bgcolor=ffffff&data=https://crisjeha.netlify.app" alt="QR Code">
+                </div>
+                <p class="scan-txt">📱 escaneie para o cardápio</p>
+            </div>
+
+            <div class="bottom">
+                <div class="contact-row">
+                    <div class="icon wpp">W</div>
+                    (24) 98848-8880
+                </div>
+                <div class="contact-row">
+                    <div class="icon web">@</div>
+                    crisjeha.netlify.app
+                </div>
+                <div class="contact-row">
+                    <div class="icon insta">✦</div>
+                    @cris.jeha
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- VERSO -->
+    <div class="card-wrap">
+        <div class="label">Verso</div>
+        <div class="card card-back" style="position: relative; overflow: hidden;">
+            <!-- Decorações -->
+            <div class="dot-decor" style="width:120px;height:120px;top:-40px;right:-40px;"></div>
+            <div class="dot-decor" style="width:80px;height:80px;bottom:-20px;left:-20px;"></div>
+
+            <img class="logo-back" src="jeha-logo.png" alt="jeha. logo">
+
+            <div class="divider-back"></div>
+
+            <p class="tagline">
+                Bolos sem açúcar refinado<br>
+                Sem glúten • Funcional<br>
+                Feitos com carinho 🌿
+            </p>
+
+            <div class="divider-back"></div>
+
+            <div class="badge-back">Barra da Tijuca · RJ</div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<button class="print-btn no-print" onclick="window.print()">
+    🖨️ Imprimir / Salvar PDF
+</button>
+
+</body>
+</html>

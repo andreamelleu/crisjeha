@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code jeha. — crisjeha.netlify.app</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #FAF4F0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 380px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(111,123,82,0.15);
+            border: 1px solid #ede7e0;
+            margin: 0 auto;
+        }
+
+        .logo-wrap {
+            margin-bottom: 28px;
+        }
+
+        .logo-wrap img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .divider {
+            width: 40px;
+            height: 2px;
+            background: #6F7B52;
+            margin: 0 auto 28px;
+            border-radius: 2px;
+        }
+
+        .qr-wrap {
+            background: #FAF4F0;
+            border-radius: 16px;
+            padding: 20px;
+            display: inline-block;
+            border: 1.5px solid #e0d8d0;
+            margin-bottom: 24px;
+        }
+
+        .qr-wrap img {
+            display: block;
+            width: 240px;
+            height: 240px;
+        }
+
+        .scan-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #6F7B52;
+            margin-bottom: 8px;
+        }
+
+        .domain {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #222;
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
+        }
+
+        .domain span {
+            color: #6F7B52;
+            font-weight: 600;
+        }
+
+        .tagline {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 28px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #6F7B52;
+            color: #fff;
+            border-radius: 100px;
+            padding: 8px 18px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .footer-note {
+            font-size: 0.68rem;
+            color: #bbb;
+            line-height: 1.6;
+        }
+
+        /* Versões para impressão */
+        .versions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .version-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 28px 24px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(111,123,82,0.12);
+            border: 1px solid #ede7e0;
+            flex: 1;
+            min-width: 180px;
+            max-width: 220px;
+        }
+
+        .version-card.dark {
+            background: #6F7B52;
+        }
+
+        .version-card .qr-inner {
+            background: #fff;
+            border-radius: 10px;
+            padding: 12px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .version-card .qr-inner img {
+            display: block;
+            width: 120px;
+            height: 120px;
+        }
+
+        .version-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #6F7B52;
+        }
+
+        .version-card.dark .version-label {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Print */
+        @media print {
+            body { background: #fff !important; padding: 0; }
+            .card { box-shadow: none; border: 1.5px solid #ddd; }
+            .no-print { display: none !important; }
+            .versions { display: none; }
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #6F7B52;
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 100px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(111,123,82,0.35);
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(111,123,82,0.45);
+        }
+
+        .page-title {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .page-title h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #6F7B52;
+            font-style: italic;
+            margin-bottom: 4px;
+        }
+
+        .page-title p {
+            font-size: 0.75rem;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+<div style="max-width: 420px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; align-items: center; text-align: center;">
+
+    <div class="page-title no-print">
+        <h1>QR Code jeha.</h1>
+        <p>Versões para impressão, embalagens e redes sociais</p>
+    </div>
+
+    <!-- Card principal -->
+    <div class="card">
+        <div class="logo-wrap">
+            <img src="jeha-logo.png" alt="jeha. logo">
+        </div>
+        <div class="divider"></div>
+
+        <p class="scan-label">🌿 Escaneie e conheça</p>
+
+        <div class="qr-wrap">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=480x480&margin=10&color=2d2d2d&bgcolor=FAF4F0&data=https://crisjeha.netlify.app" alt="QR Code crisjeha.netlify.app">
+        </div>
+
+        <p class="domain"><span>crisjeha</span>.netlify.app</p>
+        <p class="tagline">Confeitaria Artesanal & Funcional • Barra da Tijuca, RJ</p>
+
+        <div class="badge">
+            🎂 Bolos sem açúcar refinado
+        </div>
+
+        <p class="footer-note">
+            Aponte a câmera do celular para o QR Code<br>
+            para acessar o cardápio completo
+        </p>
+    </div>
+
+    <!-- Versões menores -->
+    <div class="versions no-print">
+        <div class="version-card">
+            <div class="qr-inner">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&color=2d2d2d&bgcolor=ffffff&data=https://crisjeha.netlify.app" alt="QR Code branco">
+            </div>
+            <div class="version-label">Fundo Branco</div>
+        </div>
+
+        <div class="version-card dark">
+            <div class="qr-inner">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&color=ffffff&bgcolor=6F7B52&data=https://crisjeha.netlify.app" alt="QR Code verde">
+            </div>
+            <div class="version-label">Fundo Verde</div>
+        </div>
+
+        <div class="version-card">
+            <div class="qr-inner" style="background: #FAF4F0;">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&color=6F7B52&bgcolor=FAF4F0&data=https://crisjeha.netlify.app" alt="QR Code verde creme">
+            </div>
+            <div class="version-label">Verde s/ Fundo</div>
+        </div>
+    </div>
+
+    <!-- Divisor -->
+    <div style="width: 100%; text-align: center; margin-top: 32px; margin-bottom: 4px;">
+        <p style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #6F7B52;">📄 QR Code do Cardápio</p>
+        <p style="font-size: 0.62rem; color: #bbb; margin-top: 4px;">crisjeha.netlify.app/cardapio-jeha.html</p>
+    </div>
+
+    <!-- Versões QR Cardápio -->
+    <div class="versions no-print">
+        <div class="version-card">
+            <div class="qr-inner">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&color=2d2d2d&bgcolor=ffffff&data=https://crisjeha.netlify.app/cardapio-jeha.html" alt="QR Cardápio branco">
+            </div>
+            <div class="version-label">Fundo Branco</div>
+        </div>
+
+        <div class="version-card dark">
+            <div class="qr-inner">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&color=ffffff&bgcolor=6F7B52&data=https://crisjeha.netlify.app/cardapio-jeha.html" alt="QR Cardápio verde">
+            </div>
+            <div class="version-label">Fundo Verde</div>
+        </div>
+
+        <div class="version-card">
+            <div class="qr-inner" style="background: #FAF4F0;">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&margin=8&color=6F7B52&bgcolor=FAF4F0&data=https://crisjeha.netlify.app/cardapio-jeha.html" alt="QR Cardápio verde creme">
+            </div>
+            <div class="version-label">Verde s/ Fundo</div>
+        </div>
+    </div>
+
+</div>
+
+<button class="print-btn no-print" onclick="window.print()">
+    🖨️ Imprimir / Salvar PDF
+</button>
+
+<!-- Botões de Download PNG -->
+<div class="no-print" style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:24px; margin-bottom:32px;">
+    <a href="https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&margin=20&color=2d2d2d&bgcolor=FAFAF0&data=https://crisjeha.netlify.app"
+       download="qr-jeha-site-creme.png"
+       style="background:#6F7B52;color:#fff;text-decoration:none;padding:12px 20px;border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:700;display:flex;align-items:center;gap:8px;box-shadow:0 4px 16px rgba(111,123,82,0.3);">
+        ⬇️ PNG Site — Creme
+    </a>
+    <a href="https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&margin=20&color=2d2d2d&bgcolor=ffffff&data=https://crisjeha.netlify.app"
+       download="qr-jeha-site-branco.png"
+       style="background:#fff;color:#6F7B52;border:2px solid #6F7B52;text-decoration:none;padding:12px 20px;border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:700;display:flex;align-items:center;gap:8px;">
+        ⬇️ PNG Site — Branco
+    </a>
+    <a href="https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&margin=20&color=2d2d2d&bgcolor=ffffff&data=https://crisjeha.netlify.app/cardapio-jeha.html"
+       download="qr-jeha-cardapio-branco.png"
+       style="background:#D8A8A8;color:#fff;text-decoration:none;padding:12px 20px;border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:700;display:flex;align-items:center;gap:8px;">
+        ⬇️ PNG Cardápio — Branco
+    </a>
+    <a href="https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&margin=20&color=6F7B52&bgcolor=FAF4F0&data=https://crisjeha.netlify.app/cardapio-jeha.html"
+       download="qr-jeha-cardapio-verde.png"
+       style="background:#FAF4F0;color:#6F7B52;border:2px solid #6F7B52;text-decoration:none;padding:12px 20px;border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.8rem;font-weight:700;display:flex;align-items:center;gap:8px;">
+        ⬇️ PNG Cardápio — Verde
+    </a>
+</div>
+<!-- Downloads diretos — arquivos PNG estáticos -->
+<div class="no-print" style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-top:0; margin-bottom:40px;">
+
+    <a href="qr-verde-transparente.png" download="qr-jeha-site-verde-transparente.png"
+       style="background:linear-gradient(135deg,#6F7B52,#4a5438);color:#fff;text-decoration:none;padding:14px 28px;border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;font-weight:700;display:flex;align-items:center;gap:10px;box-shadow:0 4px 20px rgba(111,123,82,0.35);">
+        🟩 ⬇️ PNG Verde Escuro — Sem Fundo (Site)
+    </a>
+
+    <a href="qr-preto-transparente.png" download="qr-jeha-site-preto-transparente.png"
+       style="background:linear-gradient(135deg,#333,#111);color:#fff;text-decoration:none;padding:14px 28px;border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif;font-size:0.85rem;font-weight:700;display:flex;align-items:center;gap:10px;box-shadow:0 4px 20px rgba(0,0,0,0.25);">
+        🔲 ⬇️ PNG Preto — Sem Fundo (Site)
+    </a>
+
+</div>
+
+</body>
+</html>
+
+

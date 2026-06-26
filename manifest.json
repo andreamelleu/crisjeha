@@ -1,0 +1,26 @@
+{
+  "name": "cris.jeha | Doçura que faz bem.",
+  "short_name": "cris.jeha",
+  "description": "Bolos saudáveis, doces e tortas artesanais — sem glúten, sem lactose e zero açúcar.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fcf8f2",
+  "theme_color": "#6F7B52",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "ICONE INSTAGRAM.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "ICONE INSTAGRAM.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["food", "shopping"],
+  "lang": "pt-BR"
+}

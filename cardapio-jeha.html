@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio jeha. — Bolos Funcionais</title>
+
+    <!-- Preview WhatsApp / Redes Sociais -->
+    <meta property="og:title" content="Cardápio jeha. — Bolos Funcionais">
+    <meta property="og:description" content="Bolos artesanais sem açúcar refinado, sem glúten e cheios de sabor. Confira nosso cardápio completo! 🌿">
+    <meta property="og:image" content="https://crisjeha.netlify.app/jeha-logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://crisjeha.netlify.app/cardapio-jeha.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="jeha.">
+    <meta name="description" content="Bolos artesanais sem açúcar refinado, sem glúten e cheios de sabor. Confira nosso cardápio completo!">
+    <meta name="theme-color" content="#6F7B52">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* Força impressão de cores de fundo em todos os navegadores */
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        :root {
+            --verde: #6F7B52;
+            --rosa: #D8A8A8;
+            --creme: #FAF4F0;
+            --texto: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #fff;
+            color: var(--texto);
+            padding: 0;
+        }
+
+        .page {
+            max-width: 720px;
+            margin: 0 auto;
+            background: #fff;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        .header {
+            background: #FAF4F0 !important;
+            background-color: #FAF4F0 !important;
+            padding: 40px 48px 32px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 2px solid #e0d8d0;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-logo img {
+            height: 150px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-tagline {
+            color: #6F7B52 !important;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 20px;
+            background: #6F7B52 !important;
+            border: 1.5px solid #6F7B52;
+            border-radius: 100px;
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            color: #ffffff !important;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        /* INTRO */
+        .intro {
+            padding: 28px 48px 24px;
+            border-bottom: 1.5px solid #d0c8c0;
+        }
+
+        .intro p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #333333;
+            max-width: 540px;
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+            padding: 28px 48px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #6F7B52;
+            font-style: italic;
+        }
+
+        .section-title .line {
+            flex: 1;
+            height: 1.5px;
+            background: #c8b8ae;
+        }
+
+        /* ITEMS */
+        .items {
+            padding: 0 48px;
+        }
+
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 18px 0;
+            border-bottom: 1px dashed #c0b8b0;
+        }
+
+        .item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info { flex: 1; }
+
+        .item-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: #111111;
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .item-desc {
+            font-size: 0.78rem;
+            color: #444444;
+            line-height: 1.65;
+            max-width: 480px;
+        }
+
+        .item-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 8px;
+        }
+
+        .tag {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            padding: 2px 9px;
+            border-radius: 100px;
+            background: #e8e0d8 !important;
+            color: #5a6640 !important;
+            text-transform: uppercase;
+            border: 1px solid #c8b8a8;
+        }
+
+        .item-price {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #6F7B52;
+            white-space: nowrap;
+            padding-top: 2px;
+        }
+
+        /* FOOTER */
+        .footer {
+            margin: 32px 48px;
+            padding: 20px 24px;
+            background: #f0ebe5 !important;
+            border-radius: 12px;
+            border: 1.5px solid #d0c8c0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .footer-text {
+            font-size: 0.78rem;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .footer-text strong {
+            color: #6F7B52;
+            font-weight: 700;
+        }
+
+        .footer-contact {
+            text-align: right;
+            font-size: 0.75rem;
+            color: #444444;
+        }
+
+        .footer-contact a {
+            color: #6F7B52;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .obs {
+            padding: 0 48px 16px;
+        }
+
+        .obs p {
+            font-size: 0.74rem;
+            color: #555555;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* PRINT — compacto para 2 páginas A4 */
+        @media print {
+            body { background: #fff !important; margin: 0; }
+            .page { max-width: 100% !important; }
+            .no-print { display: none !important; }
+
+            /* Header compacto */
+            .header {
+                background: #FAF4F0 !important;
+                background-color: #FAF4F0 !important;
+                padding: 20px 32px 16px !important;
+            }
+            .header-logo img { height: 90px !important; }
+            .header-tagline {
+                color: #6F7B52 !important;
+                font-size: 0.75rem !important;
+                margin-top: 4px !important;
+            }
+            .header-badge {
+                color: #ffffff !important;
+                background: #6F7B52 !important;
+                margin-top: 10px !important;
+                padding: 4px 10px !important;
+                font-size: 0.68rem !important;
+            }
+
+            /* Intro menor */
+            .intro {
+                padding: 12px 32px 10px !important;
+            }
+            .intro p { font-size: 0.76rem !important; line-height: 1.5 !important; }
+
+            /* Section titles compactos */
+            .section-title {
+                padding: 14px 32px 8px !important;
+            }
+            .section-title h2 { font-size: 1.1rem !important; }
+
+            /* Items compactos */
+            .items { padding: 0 32px !important; }
+            .item {
+                padding: 10px 0 !important;
+                page-break-inside: avoid;
+            }
+            .item-name { font-size: 0.92rem !important; margin-bottom: 3px !important; }
+            .item-desc { font-size: 0.7rem !important; line-height: 1.45 !important; }
+            .item-price { font-size: 0.95rem !important; }
+            .item-tags { margin-top: 4px !important; }
+            .tag { font-size: 0.58rem !important; padding: 1px 7px !important; }
+
+            /* OBS menor */
+            .obs { padding: 0 32px 8px !important; }
+            .obs p { font-size: 0.68rem !important; }
+
+            /* Footer compacto */
+            .footer {
+                background: #f0ebe5 !important;
+                margin: 16px 32px !important;
+                padding: 12px 18px !important;
+            }
+            .footer-text { font-size: 0.7rem !important; }
+            .footer-contact { font-size: 0.68rem !important; }
+
+            .tag { background: #e8e0d8 !important; color: #5a6640 !important; }
+        }
+
+        /* PRINT BUTTON */
+        .print-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #6F7B52;
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 100px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(111,123,82,0.35);
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(111,123,82,0.45);
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-logo"><img src="jeha-logo.png" alt="jeha. logo oficial"></div>
+        <div class="header-tagline">Doçura que faz bem • Confeitaria Artesanal & Funcional</div>
+        <div class="header-badge">
+            🌿 Sem açúcar refinado &nbsp;·&nbsp; Sem glúten &nbsp;·&nbsp; Funcional
+        </div>
+    </div>
+
+    <!-- INTRO -->
+    <div class="intro">
+        <p>Nossos bolos são feitos com ingredientes naturais, superalimentos e muita técnica de confeitaria funcional. Cada receita é pensada para proporcionar prazer real, sem abrir mão da saúde.</p>
+    </div>
+
+    <!-- BOLOS -->
+    <div class="section-title">
+        <h2>Bolos</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="items">
+
+        <div class="item">
+            <div class="item-info">
+                <div class="item-name">Bolo de Cenoura com Brigadeiro Funcional</div>
+                <div class="item-desc">Massa fofinha com cobertura de brigadeiro de biomassa de banana verde com cacau 100%. Indulgente, funcional e irresistível a cada fatia.</div>
+                <div class="item-tags"><span class="tag">Brigadeiro Funcional</span><span class="tag">Fofinho</span></div>
+            </div>
+            <div class="item-price">R$ 34,00</div>
+        </div>
+
+        <div class="item">
+            <div class="item-info">
+                <div class="item-name">Bolo de Laranja</div>
+                <div class="item-desc">Suco natural de laranja na massa, leve e cítrico. Refrescante e com aquele toque de alegria que ilumina o dia.</div>
+                <div class="item-tags"><span class="tag">Cítrico</span><span class="tag">Leve</span></div>
+            </div>
+            <div class="item-price">R$ 28,00</div>
+        </div>
+
+        <div class="item">
+            <div class="item-info">
+                <div class="item-name">Bolo de Baunilha</div>
+                <div class="item-desc">Clássico reinventado com ingredientes saudáveis. Suave, aerado e reconfortante como um abraço em cada pedaço.</div>
+                <div class="item-tags"><span class="tag">Clássico</span><span class="tag">Massa Aerada</span></div>
+            </div>
+            <div class="item-price">R$ 28,00</div>
+        </div>
+
+        <div class="item">
+            <div class="item-info">
+                <div class="item-name">Bolo de Milho</div>
+                <div class="item-desc">Flocão de milho com gostinho da roça. Fofinho, úmido e com aquele aconchego de sabores que a gente nunca esquece.</div>
+                <div class="item-tags"><span class="tag">Flocão</span><span class="tag">Sabor da Roça</span></div>
+            </div>
+            <div class="item-price">R$ 28,00</div>
+        </div>
+
+        <div class="item">
+            <div class="item-info">
+                <div class="item-name">Bolo de Maçã com Canela</div>
+                <div class="item-desc">Pedaços de maçã fresca com toque de canela. Aromático e com aquele aconchego de tarde especial.</div>
+                <div class="item-tags"><span class="tag">Aromático</span><span class="tag">Maçã Fresca</span></div>
+            </div>
+            <div class="item-price">R$ 29,00</div>
+        </div>
+
+        <div class="item">
+            <div class="item-info">
+                <div class="item-name">Bolo de Tapioca</div>
+                <div class="item-desc">Mix de farinhas naturais com tapioca, leite de côco e côco ralado sem açúcar. Leve, nutritivo e com aquela textura úmida irresistível.</div>
+                <div class="item-tags"><span class="tag">Tapioca</span><span class="tag">Leite de Côco</span></div>
+            </div>
+            <div class="item-price">R$ 34,00</div>
+        </div>
+
+        <div class="item">
+            <div class="item-info">
+                <div class="item-name">Bolo de Banana</div>
+                <div class="item-desc">Banana madura, aveia, passas e especiarias naturais. Macio, cheio de energia e com aquele sabor que aquece a alma.</div>
+                <div class="item-tags"><span class="tag">Com Passas</span><span class="tag">Aveia</span></div>
+            </div>
+            <div class="item-price">R$ 28,00</div>
+        </div>
+
+        <div class="item">
+            <div class="item-info">
+                <div class="item-name">Bolo Mesclado</div>
+                <div class="item-desc">Harmoniza massa de baunilha e chocolate. Equilibrado, sofisticado e irresistível para quem não consegue escolher só um sabor.</div>
+                <div class="item-tags"><span class="tag">Dois Sabores</span><span class="tag">Baunilha & Chocolate</span></div>
+            </div>
+            <div class="item-price">R$ 32,00</div>
+        </div>
+
+        <div class="item">
+            <div class="item-info">
+                <div class="item-name">Bolo Chocolate Black</div>
+                <div class="item-desc">Cacau intenso 100%, textura fofa e sabor marcante. Profundo, aveludado e com aquele poder de transformar qualquer momento em algo especial.</div>
+                <div class="item-tags"><span class="tag">Cacau 100%</span><span class="tag">Intenso</span></div>
+            </div>
+            <div class="item-price">R$ 32,00</div>
+        </div>
+
+        <div class="item">
+            <div class="item-info">
+                <div class="item-name">Bolo de Limão com Mirtilo</div>
+                <div class="item-desc">Frescor do limão combinado com mirtilos naturais. Vibrante, antioxidante e com aquele equilíbrio perfeito entre o cítrico e o doce.</div>
+                <div class="item-tags"><span class="tag">Cítrico</span><span class="tag">Com Frutas</span></div>
+            </div>
+            <div class="item-price">R$ 34,00</div>
+        </div>
+
+        <div class="item">
+            <div class="item-info">
+                <div class="item-name">Bolo de Paçoquinha</div>
+                <div class="item-desc">Massa macia com sabor marcante de amendoim, toda a nostalgia da paçoca numa versão funcional e sem culpa. Irresistível, afetivo e com aquele gostinho que a gente nunca esquece.</div>
+                <div class="item-tags"><span class="tag">Amendoim</span><span class="tag">Nostalgia</span></div>
+            </div>
+            <div class="item-price">R$ 28,00</div>
+        </div>
+
+    </div>
+
+    <!-- OBS -->
+    <div class="obs">
+        <p>* Todos os bolos são artesanais, sem açúcar refinado e feitos sob encomenda. Consulte disponibilidade e prazo de entrega.</p>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div class="footer-text">
+            <strong>jeha.</strong> — Confeitaria Artesanal & Funcional<br>
+            Barra da Tijuca, Rio de Janeiro · RJ<br>
+            <em style="font-size:0.68rem; color:#bbb;">Doçura que faz bem 🌿</em>
+        </div>
+        <div class="footer-contact">
+            📱 (24) 98848-8880<br>
+            <a href="https://instagram.com/cris.jeha">@cris.jeha</a><br>
+            <a href="https://crisjeha.netlify.app">crisjeha.netlify.app</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- BOTÃO SALVAR PDF -->
+<button class="print-btn no-print" onclick="window.print()">
+    🖨️ Salvar como PDF
+</button>
+
+</body>
+</html>

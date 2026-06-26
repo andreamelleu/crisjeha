@@ -1117,8 +1117,27 @@
                 <div class="cep-result-taxa" id="cep-taxa-text"></div>
             </div>
 
+            <!-- Campos de numero e complemento (aparecem após busca) -->
+            <div id="cep-extra-fields" style="display:none; margin-top:14px; display:none; flex-direction:column; gap:10px;">
+                <input
+                    type="text"
+                    id="cep-numero"
+                    class="cep-input"
+                    placeholder="Numero (ex: 123)"
+                    inputmode="numeric"
+                    style="width:100%;"
+                >
+                <input
+                    type="text"
+                    id="cep-complemento"
+                    class="cep-input"
+                    placeholder="Complemento opcional (Apto 201, Bloco B...)"
+                    style="width:100%;"
+                >
+            </div>
+
             <button class="cep-confirm-btn" id="cep-confirm-btn" onclick="confirmarPedidoComCep()">
-                ✅ Confirmar e Enviar Pedido via WhatsApp
+                Confirmar e Enviar Pedido via WhatsApp
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
 
@@ -1366,6 +1385,13 @@
             document.getElementById('cep-confirm-btn').classList.remove('show');
             document.getElementById('cep-loading').classList.remove('show');
             document.getElementById('cep-input').value = '';
+            // Limpa e esconde campos extras
+            const extraFields = document.getElementById('cep-extra-fields');
+            if (extraFields) {
+                extraFields.style.display = 'none';
+                document.getElementById('cep-numero').value = '';
+                document.getElementById('cep-complemento').value = '';
+            }
             cepTaxaAtual = 0;
             cepBairroAtual = '';
         }
@@ -1387,6 +1413,13 @@
             confirmBtn.classList.remove('show');
             loadingDiv.classList.add('show');
             searchBtn.disabled = true;
+            // Esconde campos extras até o CEP ser identificado
+            const extraFields = document.getElementById('cep-extra-fields');
+            if (extraFields) {
+                extraFields.style.display = 'none';
+                document.getElementById('cep-numero').value = '';
+                document.getElementById('cep-complemento').value = '';
+            }
 
             try {
                 const resp = await fetch(`https://viacep.com.br/ws/${rawCep}/json/`);
@@ -1433,6 +1466,7 @@
                     document.getElementById('cep-taxa-text').innerHTML     = `🛵 Taxa de entrega: <span style="font-size:1.1rem">R$ 14,00</span>`;
                     confirmBtn.classList.add('show');
                     confirmBtn.style.background = '#a05050';
+                    document.getElementById('cep-extra-fields').style.display = 'flex';
 
                 } else if (isBarra) {
                     cepTaxaAtual   = 9.00;
@@ -1443,17 +1477,18 @@
                     document.getElementById('cep-taxa-text').innerHTML     = `🛵 Taxa de entrega: <span style="font-size:1.1rem">R$ 9,00</span>`;
                     confirmBtn.classList.add('show');
                     confirmBtn.style.background = '#6F7B52';
+                    document.getElementById('cep-extra-fields').style.display = 'flex';
 
                 } else {
                     cepTaxaAtual   = 0;
                     cepBairroAtual = bairro;
-                    resultDiv.classList.add('show', 'erro');
-                    document.getElementById('cep-bairro-nome').textContent = `📍 ${bairro || 'Bairro não identificado'}`;
+                    resultDiv.classList.add('show', 'barra');
+                    document.getElementById('cep-bairro-nome').textContent = bairro || 'Bairro identificado';
                     document.getElementById('cep-endereco').textContent    = cepEnderecoAtual;
-                    document.getElementById('cep-taxa-text').innerHTML     = `⚠️ Bairro fora da área de entrega.<br><small style="font-weight:400">Atendemos Barra da Tijuca e Recreio. Para outros bairros, fale com a Cris no WhatsApp.</small>`;
+                    document.getElementById('cep-taxa-text').innerHTML     = `Entrega: a combinar com a Cris`;
                     confirmBtn.classList.add('show');
-                    confirmBtn.style.background = '#c47a20';
-                    confirmBtn.innerHTML = '💬 Falar com Cris sobre Entrega <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+                    confirmBtn.style.background = '#6F7B52';
+                    document.getElementById('cep-extra-fields').style.display = 'flex';
                 }
 
             } catch (err) {
@@ -1467,9 +1502,17 @@
         }
 
         function confirmarPedidoComCep() {
+            // Salva TODOS os dados ANTES de fechar o modal (fecharModalCep() zeraria tudo)
+            const taxa        = cepTaxaAtual;
+            const bairro      = cepBairroAtual;
+            const endereco    = cepEnderecoAtual;
+            const cepNum      = cepNumeroAtual;
+            const numero      = (document.getElementById('cep-numero')?.value || '').trim();
+            const complemento = (document.getElementById('cep-complemento')?.value || '').trim();
+
             fecharModalCep();
 
-            let orderText = 'Olá Cris! 🌸 Gostaria de encomendar estes bolos saudáveis da JEHA:\n\n';
+            let orderText = 'Olá Cris, quero encomendar estes bolos saudáveis da JEHA agora:\n\n';
             let totalProdutos = 0;
 
             for (let id in cart) {
@@ -1481,30 +1524,32 @@
                 if (p) {
                     const qty = cart[id];
                     const subtotal = p.price * qty;
-                    orderText += `• *${qty}x ${p.name}* (R$ ${p.price.toFixed(2).replace('.', ',')} cada) = R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+                    orderText += `- ${qty}x ${p.name}: R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
                     totalProdutos += subtotal;
                 }
             }
 
-            const totalFinal = totalProdutos + cepTaxaAtual;
+            const totalFinal = totalProdutos + taxa;
 
-            orderText += `\n*Subtotal dos Produtos:* R$ ${totalProdutos.toFixed(2).replace('.', ',')}`;
+            orderText += `\nSubtotal: R$ ${totalProdutos.toFixed(2).replace('.', ',')}`;
 
-            if (cepTaxaAtual > 0) {
-                orderText += `\n🛵 *Taxa de entrega (${cepBairroAtual}):* R$ ${cepTaxaAtual.toFixed(2).replace('.', ',')} `;
-                orderText += `\n\n💰 *TOTAL GERAL: R$ ${totalFinal.toFixed(2).replace('.', ',')}*`;
+            if (taxa > 0) {
+                orderText += `\n\nEntrega (${bairro}): R$ ${taxa.toFixed(2).replace('.', ',')}`;
+                orderText += `\nTOTAL: R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
             } else {
-                orderText += `\n🛵 *Taxa de entrega:* à combinar (bairro: ${cepBairroAtual})`;
-                orderText += `\n\n💰 *TOTAL GERAL: R$ ${totalProdutos.toFixed(2).replace('.', ',')}* + entrega`;
+                orderText += `\n\nEntrega: a combinar (${bairro})`;
+                orderText += `\nTOTAL: R$ ${totalProdutos.toFixed(2).replace('.', ',')} + entrega`;
             }
 
-            orderText += `\n\n📍 *CEP de Entrega:* ${cepNumeroAtual}`;
-            if (cepEnderecoAtual) orderText += `\n📬 ${cepEnderecoAtual}`;
+            orderText += `\n\nCEP: ${cepNum}`;
+            if (endereco) {
+                let endFull = endereco;
+                if (numero)      endFull += `, ${numero}`;
+                if (complemento) endFull += ` - ${complemento}`;
+                orderText += `\nEndereço: ${endFull}`;
+            }
 
-            orderText += `\n\n💚 *Pagamento via Pix:*`;
-            orderText += `\nChave CPF: 835.711.757-00`;
-            orderText += `\nTitular: Cris Jeha`;
-            orderText += `\n\n_Assim que o pagamento for confirmado, seu pedido entra na fila de produção com todo carinho! 🍰_`;
+            orderText += `\n\nAguardo sua confirmação para efetuar o pagamento.`;
 
             const whatsappUrl = `https://wa.me/5524988488880?text=${encodeURIComponent(orderText)}`;
             window.open(whatsappUrl, '_blank');
