@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jeha. | Links & Cardápio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="jeha-logo.png">
+    <link rel="apple-touch-icon" href="jeha-logo.png">
+
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="jeha.">
+
+    <!-- Preview ao compartilhar link -->
+    <meta property="og:title" content="jeha. | Doçura que faz bem.">
+    <meta property="og:description" content="Bolos Saudáveis Sem açúcar · Sem glúten · Sem Lactose">
+    <meta property="og:image" content="https://crisjeha.netlify.app/link%20whats.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:url" content="https://crisjeha.netlify.app">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="jeha.">
+    <meta name="theme-color" content="#6F7B52">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        :root {
+            --rosa-claro: #F4D9D9;
+            --rosa-medio: #D8A8A8;
+            --verde-salvia: #A1B4A5;
+            --verde-escuro: #6F7B52;
+            --creme-suave: #FAF4F0;
+            --branco: #ffffff;
+            --sombra-suave: rgba(111, 123, 82, 0.08);
+            --sombra-card: rgba(111, 123, 82, 0.12);
+            --transicao: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fcf8f2;
+            background-image: url('jeha-bg-novo.jpg');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--verde-escuro);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+
+        /* Container Principal */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            padding: 40px 20px 100px 20px;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Cabeçalho com logo no espaço vazio do fundo */
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 16px;
+            padding-bottom: 8px;
+            animation: fadeInDown 0.8s var(--transicao);
+        }
+
+        /* Logo posicionada no espaço vazio ACIMA do texto do background */
+        .logo-badge {
+            width: 92%;
+            max-width: 440px;
+            height: auto;
+            transition: var(--transicao);
+            filter: drop-shadow(0 2px 8px rgba(111,123,82,0.12));
+        }
+
+        .logo-badge:hover {
+            transform: scale(1.02);
+        }
+
+        /* Grid de Links */
+        .links-grid {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s var(--transicao) 0.1s both;
+        }
+
+        /* Botões Estilizados */
+        .link-card {
+            background-color: var(--branco);
+            border: 1px solid rgba(111, 123, 82, 0.15);
+            border-radius: 20px;
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--verde-escuro);
+            transition: var(--transicao);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px var(--sombra-suave);
+            cursor: pointer;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background-color: var(--verde-escuro);
+            transition: var(--transicao);
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(111, 123, 82, 0.12);
+            border-color: var(--verde-escuro);
+            background-color: #faf9f6;
+        }
+
+        .link-card:hover::before {
+            width: 10px;
+            background-color: var(--rosa-medio);
+        }
+
+        .link-icon {
+            font-size: 1.4rem;
+            margin-right: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-content {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .link-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 2px;
+        }
+
+        .link-desc {
+            font-size: 0.75rem;
+            color: #889476;
+            font-weight: 400;
+        }
+
+        .link-arrow {
+            opacity: 0.5;
+            transition: var(--transicao);
+        }
+
+        .link-card:hover .link-arrow {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+
+        /* Destaque para WhatsApp */
+        .link-card.highlight {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            border: none;
+        }
+
+        .link-card.highlight::before {
+            background-color: var(--rosa-claro);
+        }
+
+        .link-card.highlight .link-desc {
+            color: var(--rosa-claro);
+            opacity: 0.9;
+        }
+
+        .link-card.highlight:hover {
+            background-color: #5d6744;
+            color: var(--branco);
+        }
+        /* ==================== SEÇÃO QUEM SOU ==================== */
+        .about-section {
+            width: 100%;
+            background-color: var(--branco);
+            border: 1px solid rgba(111, 123, 82, 0.15);
+            border-radius: 24px;
+            padding: 24px 20px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 16px var(--sombra-suave);
+            text-align: left;
+            display: none; /* Ativado via JS */
+            animation: fadeInUp 0.6s var(--transicao);
+        }
+
+        .about-section.active {
+            display: block;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .about-text {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #555e46;
+        }
+
+        .about-photo-wrapper {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 12px auto;
+            border-radius: 50%;
+            border: 3px solid var(--verde-salvia);
+            padding: 4px;
+            background-color: var(--branco);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(111, 123, 82, 0.10);
+        }
+
+        .about-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: var(--rosa-claro);
+            /* Ícone de silhueta caso a imagem não exista na pasta */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236F7B52'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+            background-size: 50%;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* ==================== CARDÁPIO DIGITAL ==================== */
+        .menu-section {
+            width: 100%;
+            background-color: var(--branco);
+            border: 1px solid rgba(111, 123, 82, 0.15);
+            border-radius: 24px;
+            padding: 24px 16px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 16px var(--sombra-suave);
+            text-align: left;
+            display: none; /* Ativado via JS */
+            animation: fadeInUp 0.6s var(--transicao);
+        }
+
+        .menu-section.active {
+            display: block;
+        }
+
+        /* Hero Banner do Cardápio */
+        .menu-hero-banner {
+            width: 100%;
+            height: 160px;
+            border-radius: 18px;
+            margin-bottom: 18px;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transicao);
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 42px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 5;
+        }
+
+        .carousel-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            border: none;
+            cursor: pointer;
+            transition: var(--transicao);
+            padding: 0;
+        }
+
+        .carousel-dot.active {
+            background: #ffffff;
+            transform: scale(1.3);
+        }
+
+        .menu-hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 12px 16px;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.55));
+            z-index: 3;
+        }
+
+        .menu-hero-tagline {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+        }
+
+        .menu-hero-subtag {
+            font-size: 0.72rem;
+            opacity: 0.95;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            font-weight: 500;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 8px;
+        }
+
+        .menu-header-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .close-menu-btn {
+            background: none;
+            border: none;
+            color: var(--verde-escuro);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            transition: var(--transicao);
+        }
+
+        .close-menu-btn:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Abas do Cardápio */
+        .menu-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 4px 8px 12px 8px;
+            margin-bottom: 16px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tab-btn {
+            background-color: var(--creme-suave);
+            border: 1px solid rgba(111, 123, 82, 0.1);
+            color: var(--verde-escuro);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+
+        .tab-btn.active {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            border-color: var(--verde-escuro);
+        }
+
+        /* Lista de Itens */
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 0 8px;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed rgba(111, 123, 82, 0.15);
+            gap: 12px;
+        }
+
+        .item-info {
+            flex-grow: 1;
+        }
+
+        .item-title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 4px;
+        }
+
+        .item-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+        }
+
+        .item-price {
+            font-family: 'Fraunces', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+            margin-left: 8px;
+        }
+
+        .item-description {
+            font-size: 0.75rem;
+            color: #727c62;
+            line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        .item-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .tag.tag-lactose { background-color: #f7edeb; color: #b86553; }
+        .tag.tag-sugar { background-color: #ebf3f7; color: #43819e; }
+        .tag.tag-protein { background-color: #ebf7ed; color: #3b874c; }
+
+        /* Controles de Quantidade */
+        .item-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            align-self: center;
+            min-width: 80px;
+        }
+
+        .item-actions .item-price {
+            font-family: 'Fraunces', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #9E4A4A;
+            white-space: nowrap;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qty-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid var(--verde-escuro);
+            background: none;
+            color: var(--verde-escuro);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transicao);
+        }
+
+        .qty-btn:hover {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+        }
+
+        .qty-val {
+            font-size: 0.9rem;
+            font-weight: 600;
+            min-width: 14px;
+            text-align: center;
+        }
+
+        /* Sacola / Cart Flutuante Inferior */
+        .cart-bar {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            width: calc(100% - 40px);
+            max-width: 440px;
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            border-radius: 20px;
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 25px rgba(111, 123, 82, 0.35);
+            z-index: 100;
+            transition: var(--transicao);
+        }
+
+        .cart-bar.active {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .cart-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .cart-summary {
+            font-size: 0.8rem;
+            color: var(--rosa-claro);
+            font-weight: 500;
+        }
+
+        .cart-total {
+            font-family: 'Fraunces', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .send-order-btn {
+            background-color: var(--rosa-claro);
+            color: var(--verde-escuro);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transicao);
+        }
+
+        .send-order-btn:hover {
+            background-color: var(--rosa-medio);
+            transform: scale(1.03);
+        }
+
+        /* Seção Nossa Filosofia */
+        .philosophy-section {
+            width: 100%;
+            margin-top: 10px;
+            background-color: #fcf8f2;
+            border-radius: 20px;
+            padding: 24px;
+            border: 1px dashed var(--rosa-medio);
+            animation: fadeInUp 0.8s var(--transicao) 0.2s both;
+            text-align: center;
+        }
+
+        .philosophy-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .philosophy-text {
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: #555e46;
+        }
+
+        /* Compartilhar */
+        .share-btn {
+            margin-top: 24px;
+            background: none;
+            border: none;
+            color: var(--verde-escuro);
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: var(--transicao);
+            opacity: 0.8;
+        }
+
+        .share-btn:hover {
+            background-color: rgba(111, 123, 82, 0.06);
+            opacity: 1;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 16px;
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+            color: var(--verde-escuro);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            animation: fadeIn 1s var(--transicao) 0.3s both;
+        }
+
+        .footer-text {
+            opacity: 0.6;
+        }
+
+        .footer-link {
+            text-decoration: none;
+            color: var(--verde-escuro);
+            font-weight: 700;
+            font-size: 0.75rem;
+            opacity: 0.7;
+            transition: var(--transicao);
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--rosa-medio);
+        }
+
+        /* Animações */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ── MODAL CEP ─────────────────────────────── */
+        .cep-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(4px);
+            z-index: 9000;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .cep-overlay.open {
+            display: flex;
+            animation: fadeIn 0.25s ease;
+        }
+        .cep-modal {
+            background: #FAF4F0;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 20px 20px 0 0;
+            padding: 28px 24px 40px;
+            box-shadow: 0 -8px 40px rgba(111,123,82,0.18);
+            animation: slideUpModal 0.35s cubic-bezier(0.16,1,0.3,1);
+        }
+        @keyframes slideUpModal {
+            from { transform: translateY(100%); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+        .cep-modal-handle {
+            width: 40px; height: 4px;
+            background: #c8b8ae;
+            border-radius: 99px;
+            margin: 0 auto 20px;
+        }
+        .cep-modal-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            font-style: italic;
+            color: #6F7B52;
+            text-align: center;
+            margin-bottom: 6px;
+        }
+        .cep-modal-subtitle {
+            font-size: 0.78rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 22px;
+            line-height: 1.5;
+        }
+        .cep-input-row {
+            display: flex;
+            gap: 10px;
+        }
+        .cep-input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 1.5px solid #d0c8c0;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            background: #fff;
+            color: #333;
+            outline: none;
+            letter-spacing: 0.08em;
+            transition: border-color 0.2s;
+        }
+        .cep-input:focus { border-color: #6F7B52; }
+        .cep-search-btn {
+            padding: 14px 18px;
+            background: #6F7B52;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .cep-search-btn:hover { background: #5a6640; }
+        .cep-search-btn:disabled { background: #aaa; cursor: not-allowed; }
+        .cep-result {
+            margin-top: 18px;
+            padding: 16px;
+            border-radius: 12px;
+            display: none;
+        }
+        .cep-result.show { display: block; }
+        .cep-result.barra {
+            background: #e8f0ea;
+            border: 1.5px solid #6F7B52;
+        }
+        .cep-result.recreio {
+            background: #fce8e8;
+            border: 1.5px solid #c47a7a;
+        }
+        .cep-result.erro {
+            background: #fff3cd;
+            border: 1.5px solid #e0a030;
+        }
+        .cep-result-bairro {
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .cep-result-endereco {
+            font-size: 0.76rem;
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        .cep-result-taxa {
+            font-size: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cep-result.barra .cep-result-taxa { color: #6F7B52; }
+        .cep-result.recreio .cep-result-taxa { color: #a05050; }
+        .cep-confirm-btn {
+            width: 100%;
+            margin-top: 18px;
+            padding: 16px;
+            background: #6F7B52;
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 16px rgba(111,123,82,0.3);
+        }
+        .cep-confirm-btn.show { display: flex; }
+        .cep-confirm-btn:hover { background: #5a6640; transform: translateY(-1px); }
+        .cep-cancel {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 0.78rem;
+            color: #888;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .cep-loading {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #6F7B52;
+            margin-top: 14px;
+            display: none;
+        }
+        .cep-loading.show { display: block; }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        
+        <!-- Header com logo no espaço vazio do background -->
+        <header class="header">
+            <img class="logo-badge" src="jeha-logo.png" alt="Logotipo Oficial JEHA">
+        </header>
+
+        <!-- Grid de Links -->
+        <main class="links-grid" id="main-links">
+            
+            <!-- Link 1: Quem Sou -->
+            <div class="link-card" id="open-about-btn">
+                <div class="link-content">
+                    <div class="link-title">Quem Sou</div>
+                    <div class="link-desc">Conheça a nossa história e propósito</div>
+                </div>
+                <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+
+            <!-- Link 2: Cardápio Interativo (Abre na mesma página) -->
+            <div class="link-card" id="open-menu-btn">
+                <div class="link-content">
+                    <div class="link-title">Cardápio</div>
+                    <div class="link-desc">Faça sua seleção de bolos saudáveis</div>
+                </div>
+                <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+
+            <!-- Link 2.5: Pagar com Pix -->
+            <div class="link-card" id="pix-btn" style="background-color: #f0f7f1; border-color: rgba(59, 135, 76, 0.2);">
+                <div class="link-content">
+                    <div class="link-title">💚 Pagar com Pix</div>
+                    <div class="link-desc">Toque para copiar a chave Pix</div>
+                </div>
+                <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </div>
+
+            <!-- Link 3: WhatsApp Direto -->
+            <a href="https://wa.me/5524988488880?text=Ol%C3%A1%20Cris!%20Gostaria%20de%20saber%20mais%20sobre%20os%20doces%20saud%C3%A1veis%20da%20Jeha." target="_blank" class="link-card highlight">
+                <div class="link-content">
+                    <div class="link-title">Falar no WhatsApp</div>
+                    <div class="link-desc">Fale direto com a Cris para encomendas</div>
+                </div>
+                <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+
+            <!-- Link 4: Instagram @cris.jeha -->
+            <a href="https://instagram.com/cris.jeha" target="_blank" class="link-card">
+                <div class="link-content">
+                    <div class="link-title">Siga no Instagram</div>
+                    <div class="link-desc">@cris.jeha • Doçura que faz bem!</div>
+                </div>
+                <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </a>
+
+        </main>
+
+        <!-- Seção Quem Sou -->
+        <section class="about-section" id="about-section">
+            <div class="menu-header">
+                <h2 class="menu-header-title">Quem Sou</h2>
+                <button class="close-menu-btn" id="close-about-btn">&times;</button>
+            </div>
+            <div class="about-content">
+                <div class="about-photo-wrapper">
+                    <img class="about-photo" src="Cris-semfundo.png" alt="Cris Jeha">
+                </div>
+                <p class="about-text">
+                    Olá! Sou a <strong>Cris Jeha</strong>. Minha paixão é criar doçuras que fazem bem — bolos, doces artesanais e funcionais desenvolvidos sem açúcar refinado e cheios de afeto.
+                </p>
+                <p class="about-text">
+                    A JEHA nasceu do desejo de unir o prazer irresistível do doce à saúde e ao bem-estar. Cada receita é elaborada com ingredientes selecionados, priorizando superalimentos e combinando técnicas de confeitaria funcional para proporcionar uma indulgência totalmente livre de culpa.
+                </p>
+                <p class="about-text">
+                    Acredito genuinamente que <em>cuidar também é uma forma de adoçar a vida</em>. Seja muito bem-vindo(a) ao nosso universo saudável! 🌿🌸
+                </p>
+            </div>
+        </section>
+
+        <!-- Cardápio Interativo (Abas + Lista) -->
+        <section class="menu-section" id="menu-section">
+            <div class="menu-header">
+                <h2 class="menu-header-title">Cardápio</h2>
+                <button class="close-menu-btn" id="close-menu-btn">&times;</button>
+            </div>
+
+            <!-- Carrossel de Destaque -->
+            <div class="menu-hero-banner" id="menu-hero-banner">
+                <div class="carousel-track" id="carousel-track">
+                    <div class="carousel-slide" style="background-image: url('bolo-limao.png');"></div>
+                    <div class="carousel-slide" style="background-image: url('bolo-laranja.png');"></div>
+                    <div class="carousel-slide" style="background-image: url('bolo-abacaxi.png');"></div>
+                    <div class="carousel-slide" style="background-image: url('bolo-banana.png');"></div>
+                </div>
+                <div class="carousel-dots" id="carousel-dots">
+                    <button class="carousel-dot active" data-index="0"></button>
+                    <button class="carousel-dot" data-index="1"></button>
+                    <button class="carousel-dot" data-index="2"></button>
+                    <button class="carousel-dot" data-index="3"></button>
+                </div>
+                <div class="menu-hero-overlay">
+                    <span class="menu-hero-tagline">Bolos saudáveis</span>
+                </div>
+            </div>
+
+            <!-- Categorias -->
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-category="bolos">Bolos</button>
+                <span class="tag tag-protein" style="font-size: 0.7rem; padding: 4px 10px;">Sem Glúten</span>
+                <span class="tag tag-lactose" style="font-size: 0.7rem; padding: 4px 10px;">Sem Lactose</span>
+                <span class="tag tag-sugar" style="font-size: 0.7rem; padding: 4px 10px;">Sem Açúcar</span>
+            </div>
+
+            <!-- Lista de Produtos -->
+            <div class="menu-items" id="menu-items-list">
+                <!-- Injetados dinamicamente via JS -->
+            </div>
+        </section>
+
+        <!-- Nossa Filosofia -->
+        <section class="philosophy-section">
+            <h3 class="philosophy-title">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--rosa-medio)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px; display: inline-block; vertical-align: middle;">
+                    <!-- Haste central -->
+                    <path d="M12 21V10" stroke="var(--verde-escuro)" />
+                    <!-- Pétala Central -->
+                    <path d="M12 10C10.5 7 11 4 12 2C13 4 13.5 7 12 10Z" fill="var(--rosa-medio)" />
+                    <!-- Pétala Esquerda -->
+                    <path d="M12 15C9 14.5 7.5 12.5 7 10C9 11 11 13 12 15Z" fill="var(--rosa-medio)" />
+                    <!-- Pétala Direita -->
+                    <path d="M12 16C15 15.5 16.5 13.5 17 11C15 12 13 14 12 16Z" fill="var(--rosa-medio)" />
+                </svg>
+                Confeitaria artesanal
+            </h3>
+            <p class="philosophy-text" style="font-size: 0.75rem; opacity: 0.9; display: flex; align-items: center; justify-content: center; gap: 4px; font-weight: 600;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                Barra da Tijuca, Rio de Janeiro, RJ
+            </p>
+        </section>
+
+        <!-- Botões de ação -->
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 4px;">
+            <button class="share-btn" id="share-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                Compartilhar Links
+            </button>
+            <a href="cardapio-jeha.html" target="_blank" class="share-btn" style="text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Ver Cardápio
+            </a>
+            <a href="qrcode-jeha.html" target="_blank" class="share-btn" style="text-decoration: none;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="4" height="4"/></svg>
+                QR Code
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <span class="footer-text">cris.jeha© 2026 • Todos os direitos reservados</span>
+            <a href="https://mywork.digital" target="_blank" class="footer-link">mywork.digital</a>
+        </footer>
+
+    </div>
+
+    <!-- Sacola Flutuante -->
+    <div class="cart-bar" id="cart-bar">
+        <div class="cart-info">
+            <span class="cart-summary" id="cart-summary">0 itens na sacola</span>
+            <span class="cart-total" id="cart-total">R$ 0,00</span>
+        </div>
+        <button class="send-order-btn" id="send-order-btn">
+            Enviar Pedido
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">Link copiado com sucesso! 🌸</div>
+
+    <!-- Modal CEP de Entrega -->
+    <div class="cep-overlay" id="cep-overlay">
+        <div class="cep-modal">
+            <div class="cep-modal-handle"></div>
+            <div class="cep-modal-title">📍 CEP de Entrega</div>
+            <div class="cep-modal-subtitle">Informe seu CEP para calcularmos<br>a taxa de entrega automaticamente.</div>
+
+            <div class="cep-input-row">
+                <input
+                    type="tel"
+                    id="cep-input"
+                    class="cep-input"
+                    placeholder="Ex: 22640-100"
+                    maxlength="9"
+                    inputmode="numeric"
+                >
+                <button class="cep-search-btn" id="cep-search-btn" onclick="buscarCep()">Buscar</button>
+            </div>
+
+            <div class="cep-loading" id="cep-loading">🔎 Consultando CEP...</div>
+
+            <div class="cep-result" id="cep-result">
+                <div class="cep-result-bairro" id="cep-bairro-nome"></div>
+                <div class="cep-result-endereco" id="cep-endereco"></div>
+                <div class="cep-result-taxa" id="cep-taxa-text"></div>
+            </div>
+
+            <button class="cep-confirm-btn" id="cep-confirm-btn" onclick="confirmarPedidoComCep()">
+                ✅ Confirmar e Enviar Pedido via WhatsApp
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            </button>
+
+            <div class="cep-cancel" onclick="fecharModalCep()">Cancelar</div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Dados dos Doces Saudáveis da JEHA
+        const products = {
+            bolos: [
+                { id: 'bo1', name: 'Bolo de Cenoura com Brigadeiro Funcional', price: 34.00, desc: 'Massa fofinha com cobertura de brigadeiro de biomassa de banana verde com cacau 100%. Indulgente, funcional e irresistível a cada fatia.', tags: ['Brigadeiro Funcional', 'Fofinho'] },
+                { id: 'bo2', name: 'Bolo de Laranja', price: 28.00, desc: 'Suco natural de laranja na massa, leve e cítrico. Refrescante e com aquele toque de alegria que ilumina o dia.', tags: ['Cítrico', 'Leve'] },
+                { id: 'bo3', name: 'Bolo de Baunilha', price: 28.00, desc: 'Clássico reinventado com ingredientes saudáveis. Suave, aerado e reconfortante como um abraço em cada pedaço.', tags: ['Clássico', 'Massa Aerada'] },
+                { id: 'bo4', name: 'Bolo de Milho', price: 28.00, desc: 'Flocão de milho com gostinho da roça. Fofinho, úmido e com aquele aconchego de sabores que a gente nunca esquece.', tags: ['Flocão', 'Sabor da Roça'] },
+                { id: 'bo5', name: 'Bolo de Maçã com Canela', price: 29.00, desc: 'Pedaços de maçã fresca com toque de canela. Aromático e com aquele aconchego de tarde especial.', tags: ['Com Amêndoas', 'Aromático'] },
+                { id: 'bo6', name: 'Bolo de Tapioca', price: 34.00, desc: 'Mix de farinhas naturais com tapioca, leite de côco e côco ralado sem açúcar. Leve, nutritivo e com aquela textura úmida irresistível.', tags: ['Tapioca', 'Leite de Côco'] },
+                { id: 'bo7', name: 'Bolo de Banana', price: 28.00, desc: 'Banana madura, aveia, passas e especiarias naturais. Macio, cheio de energia e com aquele sabor que aquece a alma.', tags: ['Com Passas', 'Aveia'] },
+                { id: 'bo8', name: 'Bolo Mesclado', price: 32.00, desc: 'Harmoniza massa de baunilha e chocolate. Equilibrado, sofisticado e irresistível para quem não consegue escolher só um sabor.', tags: ['Dois Sabores', 'Baunilha & Chocolate'] },
+                { id: 'bo9', name: 'Bolo Chocolate Black', price: 32.00, desc: 'Cacau intenso 100%, textura fofa e sabor marcante. Profundo, aveludado e com aquele poder de transformar qualquer momento em algo especial.', tags: ['Cacau 100%', 'Intenso'] },
+                { id: 'bo10', name: 'Bolo de Limão com Mirtilo', price: 34.00, desc: 'Frescor do limão combinado com mirtilos naturais. Vibrante, antioxidante e com aquele equilíbrio perfeito entre o cítrico e o doce.', tags: ['Cítrico', 'Com Frutas'] },
+                { id: 'bo11', name: 'Bolo de Paçoquinha', price: 28.00, desc: 'Massa macia com sabor marcante de amendoim, toda a nostalgia da paçoca numa versão funcional e sem culpa. Irresistível, afetivo e com aquele gostinho que a gente nunca esquece.', tags: ['Amendoim', 'Nostalgia'] }
+            ]
+        };
+
+        // Estado da Sacola
+        let cart = {};
+
+        // Carrossel Automático
+        (function() {
+            const track = document.getElementById('carousel-track');
+            const dots = document.querySelectorAll('.carousel-dot');
+            let current = 0;
+            const total = dots.length;
+            let timer;
+
+            function goTo(index) {
+                current = index;
+                track.style.transform = `translateX(-${current * 100}%)`;
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            }
+
+            function next() {
+                goTo((current + 1) % total);
+            }
+
+            function startTimer() {
+                clearInterval(timer);
+                timer = setInterval(next, 3000);
+            }
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    goTo(parseInt(dot.dataset.index));
+                    startTimer();
+                });
+            });
+
+            startTimer();
+        })();
+
+        // Elementos DOM
+        const mainLinks = document.getElementById('main-links');
+        const menuSection = document.getElementById('menu-section');
+        const openMenuBtn = document.getElementById('open-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const openAboutBtn = document.getElementById('open-about-btn');
+        const closeAboutBtn = document.getElementById('close-about-btn');
+        const aboutSection = document.getElementById('about-section');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const menuItemsList = document.getElementById('menu-items-list');
+        const cartBar = document.getElementById('cart-bar');
+        const cartSummary = document.getElementById('cart-summary');
+        const cartTotal = document.getElementById('cart-total');
+        const sendOrderBtn = document.getElementById('send-order-btn');
+        const shareBtn = document.getElementById('share-btn');
+        const toast = document.getElementById('toast');
+
+        // Abre Quem Sou
+        openAboutBtn.addEventListener('click', () => {
+            mainLinks.style.display = 'none';
+            aboutSection.classList.add('active');
+        });
+
+        // Fecha Quem Sou
+        closeAboutBtn.addEventListener('click', () => {
+            aboutSection.classList.remove('active');
+            mainLinks.style.display = 'flex';
+        });
+
+        // Abre o Cardápio
+        openMenuBtn.addEventListener('click', () => {
+            mainLinks.style.display = 'none';
+            menuSection.classList.add('active');
+            renderCategory('bolos');
+        });
+
+        // Fecha o Cardápio
+        closeMenuBtn.addEventListener('click', () => {
+            menuSection.classList.remove('active');
+            mainLinks.style.display = 'flex';
+        });
+
+        // Seleção de Abas
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderCategory(btn.dataset.category);
+            });
+        });
+
+        // Renderiza itens da categoria selecionada
+        function renderCategory(cat) {
+            const list = products[cat];
+            menuItemsList.innerHTML = '';
+
+            list.forEach(p => {
+                const qty = cart[p.id] || 0;
+                
+                // Tags HTML
+                const tagsHTML = p.tags.map(t => {
+                    let tagClass = 'tag-lactose';
+                    if (t.includes('Açúcar') || t.includes('Zero')) tagClass = 'tag-sugar';
+                    if (t.includes('Prote') || t.includes('Funcional')) tagClass = 'tag-protein';
+                    return `<span class="tag ${tagClass}">${t}</span>`;
+                }).join('');
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'menu-item';
+                itemDiv.innerHTML = `
+                    <div class="item-info">
+                        <h4 class="item-title">${p.name}</h4>
+                        <p class="item-description">${p.desc}</p>
+                        <div class="item-tags">${tagsHTML}</div>
+                    </div>
+                    <div class="item-actions">
+                        <span class="item-price">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
+                        <div class="qty-controls">
+                            <button class="qty-btn" onclick="updateQty('${p.id}', -1, '${cat}')">-</button>
+                            <span class="qty-val">${qty}</span>
+                            <button class="qty-btn" onclick="updateQty('${p.id}', 1, '${cat}')">+</button>
+                        </div>
+                    </div>
+                `;
+                menuItemsList.appendChild(itemDiv);
+            });
+        }
+
+        // Atualiza Quantidade na Sacola
+        window.updateQty = function(id, change, cat) {
+            // Acha o produto nos dados
+            let product = null;
+            for (let c in products) {
+                const found = products[c].find(p => p.id === id);
+                if (found) {
+                    product = found;
+                    break;
+                }
+            }
+
+            if (!product) return;
+
+            const currentQty = cart[id] || 0;
+            const newQty = Math.max(0, currentQty + change);
+
+            if (newQty === 0) {
+                delete cart[id];
+            } else {
+                cart[id] = newQty;
+            }
+
+            // Atualiza tela
+            renderCategory(cat);
+            updateCartBar();
+        };
+
+        // Atualiza a sacola flutuante
+        function updateCartBar() {
+            let totalItems = 0;
+            let totalPrice = 0;
+
+            for (let id in cart) {
+                // Acha o preço do produto
+                let p = null;
+                for (let c in products) {
+                    p = products[c].find(prod => prod.id === id);
+                    if (p) break;
+                }
+                if (p) {
+                    totalItems += cart[id];
+                    totalPrice += p.price * cart[id];
+                }
+            }
+
+            if (totalItems > 0) {
+                cartSummary.textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'itens'} na sacola`;
+                cartTotal.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+                cartBar.classList.add('active');
+            } else {
+                cartBar.classList.remove('active');
+            }
+        }
+
+        // ── Sistema de CEP ───────────────────────────────────────────
+        let cepTaxaAtual = 0;
+        let cepBairroAtual = '';
+        let cepEnderecoAtual = '';
+        let cepNumeroAtual = '';
+
+        const ZONAS_BARRA = [
+            'Barra da Tijuca', 'Barra Da Tijuca', 'BARRA DA TIJUCA',
+            'Jacarepaguá', 'Recreio', 'Pechincha', 'Vargem Pequena',
+            'Vargem Grande', 'Camorim', 'Gardênia Azul', 'Curicica',
+            'Taquara', 'Praça Seca', 'Anil'
+        ];
+        const ZONAS_RECREIO = [
+            'Recreio dos Bandeirantes', 'Recreio Dos Bandeirantes',
+            'RECREIO DOS BANDEIRANTES', 'Recreio'
+        ];
+
+        // Mascara o CEP digitado (ex: 22640-100)
+        document.getElementById('cep-input').addEventListener('input', function() {
+            let v = this.value.replace(/\D/g, '');
+            if (v.length > 5) v = v.slice(0,5) + '-' + v.slice(5,8);
+            this.value = v;
+        });
+
+        // Permite buscar apertando Enter
+        document.getElementById('cep-input').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') buscarCep();
+        });
+
+        function abrirModalCep() {
+            document.getElementById('cep-overlay').classList.add('open');
+            document.getElementById('cep-input').focus();
+        }
+
+        function fecharModalCep() {
+            document.getElementById('cep-overlay').classList.remove('open');
+            // Limpa estado
+            document.getElementById('cep-result').className = 'cep-result';
+            document.getElementById('cep-result').classList.remove('show');
+            document.getElementById('cep-confirm-btn').classList.remove('show');
+            document.getElementById('cep-loading').classList.remove('show');
+            document.getElementById('cep-input').value = '';
+            cepTaxaAtual = 0;
+            cepBairroAtual = '';
+        }
+
+        async function buscarCep() {
+            const rawCep = document.getElementById('cep-input').value.replace(/\D/g, '');
+            if (rawCep.length !== 8) {
+                alert('⚠️ Digite um CEP válido com 8 dígitos.');
+                return;
+            }
+
+            const resultDiv   = document.getElementById('cep-result');
+            const loadingDiv  = document.getElementById('cep-loading');
+            const confirmBtn  = document.getElementById('cep-confirm-btn');
+            const searchBtn   = document.getElementById('cep-search-btn');
+
+            // Reset
+            resultDiv.className = 'cep-result';
+            confirmBtn.classList.remove('show');
+            loadingDiv.classList.add('show');
+            searchBtn.disabled = true;
+
+            try {
+                const resp = await fetch(`https://viacep.com.br/ws/${rawCep}/json/`);
+                const data = await resp.json();
+
+                loadingDiv.classList.remove('show');
+                searchBtn.disabled = false;
+
+                if (data.erro) {
+                    resultDiv.classList.add('show', 'erro');
+                    document.getElementById('cep-bairro-nome').textContent = '❌ CEP não encontrado';
+                    document.getElementById('cep-endereco').textContent = 'Verifique o número e tente novamente.';
+                    document.getElementById('cep-taxa-text').textContent = '';
+                    return;
+                }
+
+                const bairro    = data.bairro  || '';
+                const logradouro = data.logradouro || '';
+                const cidade    = data.localidade || '';
+                const uf        = data.uf || '';
+
+                cepEnderecoAtual = `${logradouro ? logradouro + ', ' : ''}${bairro} — ${cidade}/${uf}`;
+                cepNumeroAtual   = rawCep.replace(/(\d{5})(\d{3})/, '$1-$2');
+
+                // Identifica zona
+                const bairroLower = bairro.toLowerCase();
+                const isRecreioBairro = ZONAS_RECREIO.some(z => bairro.includes(z) || z.toLowerCase().includes(bairroLower));
+                const isRecreio = isRecreioBairro ||
+                    bairroLower.includes('recreio') ||
+                    (parseInt(rawCep) >= 22790000 && parseInt(rawCep) <= 22795999);
+
+                const isBarra = !isRecreio && (
+                    ZONAS_BARRA.some(z => bairro.includes(z) || z.toLowerCase().includes(bairroLower)) ||
+                    bairroLower.includes('barra') ||
+                    (parseInt(rawCep) >= 22611000 && parseInt(rawCep) <= 22795999)
+                );
+
+                if (isRecreio) {
+                    cepTaxaAtual   = 14.00;
+                    cepBairroAtual = 'Recreio dos Bandeirantes';
+                    resultDiv.classList.add('show', 'recreio');
+                    document.getElementById('cep-bairro-nome').textContent = `🏘️ ${bairro || 'Recreio dos Bandeirantes'}`;
+                    document.getElementById('cep-endereco').textContent    = cepEnderecoAtual;
+                    document.getElementById('cep-taxa-text').innerHTML     = `🛵 Taxa de entrega: <span style="font-size:1.1rem">R$ 14,00</span>`;
+                    confirmBtn.classList.add('show');
+                    confirmBtn.style.background = '#a05050';
+
+                } else if (isBarra) {
+                    cepTaxaAtual   = 9.00;
+                    cepBairroAtual = 'Barra da Tijuca';
+                    resultDiv.classList.add('show', 'barra');
+                    document.getElementById('cep-bairro-nome').textContent = `🏡 ${bairro || 'Barra da Tijuca'}`;
+                    document.getElementById('cep-endereco').textContent    = cepEnderecoAtual;
+                    document.getElementById('cep-taxa-text').innerHTML     = `🛵 Taxa de entrega: <span style="font-size:1.1rem">R$ 9,00</span>`;
+                    confirmBtn.classList.add('show');
+                    confirmBtn.style.background = '#6F7B52';
+
+                } else {
+                    cepTaxaAtual   = 0;
+                    cepBairroAtual = bairro;
+                    resultDiv.classList.add('show', 'erro');
+                    document.getElementById('cep-bairro-nome').textContent = `📍 ${bairro || 'Bairro não identificado'}`;
+                    document.getElementById('cep-endereco').textContent    = cepEnderecoAtual;
+                    document.getElementById('cep-taxa-text').innerHTML     = `⚠️ Bairro fora da área de entrega.<br><small style="font-weight:400">Atendemos Barra da Tijuca e Recreio. Para outros bairros, fale com a Cris no WhatsApp.</small>`;
+                    confirmBtn.classList.add('show');
+                    confirmBtn.style.background = '#c47a20';
+                    confirmBtn.innerHTML = '💬 Falar com Cris sobre Entrega <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+                }
+
+            } catch (err) {
+                loadingDiv.classList.remove('show');
+                searchBtn.disabled = false;
+                resultDiv.classList.add('show', 'erro');
+                document.getElementById('cep-bairro-nome').textContent = '❌ Erro ao consultar CEP';
+                document.getElementById('cep-endereco').textContent    = 'Verifique sua conexão e tente novamente.';
+                document.getElementById('cep-taxa-text').textContent   = '';
+            }
+        }
+
+        function confirmarPedidoComCep() {
+            fecharModalCep();
+
+            let orderText = 'Olá Cris! 🌸 Gostaria de encomendar estes bolos saudáveis da JEHA:\n\n';
+            let totalProdutos = 0;
+
+            for (let id in cart) {
+                let p = null;
+                for (let c in products) {
+                    p = products[c].find(prod => prod.id === id);
+                    if (p) break;
+                }
+                if (p) {
+                    const qty = cart[id];
+                    const subtotal = p.price * qty;
+                    orderText += `• *${qty}x ${p.name}* (R$ ${p.price.toFixed(2).replace('.', ',')} cada) = R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+                    totalProdutos += subtotal;
+                }
+            }
+
+            const totalFinal = totalProdutos + cepTaxaAtual;
+
+            orderText += `\n*Subtotal dos Produtos:* R$ ${totalProdutos.toFixed(2).replace('.', ',')}`;
+
+            if (cepTaxaAtual > 0) {
+                orderText += `\n🛵 *Taxa de entrega (${cepBairroAtual}):* R$ ${cepTaxaAtual.toFixed(2).replace('.', ',')} `;
+                orderText += `\n\n💰 *TOTAL GERAL: R$ ${totalFinal.toFixed(2).replace('.', ',')}*`;
+            } else {
+                orderText += `\n🛵 *Taxa de entrega:* à combinar (bairro: ${cepBairroAtual})`;
+                orderText += `\n\n💰 *TOTAL GERAL: R$ ${totalProdutos.toFixed(2).replace('.', ',')}* + entrega`;
+            }
+
+            orderText += `\n\n📍 *CEP de Entrega:* ${cepNumeroAtual}`;
+            if (cepEnderecoAtual) orderText += `\n📬 ${cepEnderecoAtual}`;
+
+            orderText += `\n\n💚 *Pagamento via Pix:*`;
+            orderText += `\nChave CPF: 835.711.757-00`;
+            orderText += `\nTitular: Cris Jeha`;
+            orderText += `\n\n_Assim que o pagamento for confirmado, seu pedido entra na fila de produção com todo carinho! 🍰_`;
+
+            const whatsappUrl = `https://wa.me/5524988488880?text=${encodeURIComponent(orderText)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Envia Pedido → Abre Modal de CEP
+        sendOrderBtn.addEventListener('click', () => {
+            // Reseta botão confirmar para o texto padrão caso tenha sido alterado
+            const confirmBtn = document.getElementById('cep-confirm-btn');
+            confirmBtn.innerHTML = '✅ Confirmar e Enviar Pedido via WhatsApp <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+            abrirModalCep();
+        });
+
+        // Copiar Chave Pix
+        document.getElementById('pix-btn').addEventListener('click', () => {
+            navigator.clipboard.writeText('83571175700').then(() => {
+                const t = document.getElementById('toast');
+                t.textContent = 'Chave Pix copiada! 💚 Cole no seu banco.';
+                t.classList.add('show');
+                setTimeout(() => {
+                    t.classList.remove('show');
+                    t.textContent = 'Link copiado com sucesso! 🌸';
+                }, 3000);
+            });
+        });
+
+        // Copiar Link
+        shareBtn.addEventListener('click', () => {
+            const dummy = document.createElement('input');
+            const text = window.location.href;
+            
+            document.body.appendChild(dummy);
+            dummy.value = text;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        });
+    </script>
+
+    <!-- Registro do PWA Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('jeha PWA ativo ✅', reg.scope))
+                    .catch(err => console.log('SW erro:', err));
+            });
+        }
+    </script>
+</body>
+</html>
