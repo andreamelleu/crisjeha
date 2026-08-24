@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>jeha. | Links & Cardápio</title>
+    <title>jeha. | Links &amp; Cardápio</title>
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="jeha-logo.png">
@@ -415,7 +415,7 @@
             transform: scale(1.1);
         }
 
-        /* Abas do Cardápio */
+        /* Abas do Cardápio (legado) */
         .menu-tabs {
             display: flex;
             flex-wrap: wrap;
@@ -443,6 +443,153 @@
             background-color: var(--verde-escuro);
             color: var(--branco);
             border-color: var(--verde-escuro);
+        }
+
+        /* ===== SLIDER DE FOTOS ===== */
+        .menu-hero-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            margin-bottom: 12px;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slider-img {
+            width: 100%;
+            flex-shrink: 0;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 0 4px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: rgba(111, 123, 82, 0.2);
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+
+        .dot.active {
+            background-color: var(--verde-escuro);
+            transform: scale(1.2);
+        }
+
+        /* ===== HEADER DO CARDÁPIO ===== */
+        .menu-info-header {
+            text-align: center;
+            padding: 0 8px 14px;
+        }
+
+        .menu-info-text {
+            font-size: 0.72rem;
+            color: var(--verde-escuro);
+            font-weight: 500;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        /* ===== TOGGLE DE AÇÚCAR ===== */
+        .sugar-toggle {
+            display: flex;
+            background-color: var(--creme-suave);
+            border: 1.5px solid rgba(111, 123, 82, 0.15);
+            border-radius: 30px;
+            padding: 3px;
+            gap: 0;
+            width: fit-content;
+            margin: 0 auto 14px;
+        }
+
+        .sugar-opt {
+            padding: 8px 16px;
+            border-radius: 26px;
+            border: none;
+            background: none;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #889476;
+            cursor: pointer;
+            transition: var(--transicao);
+            white-space: nowrap;
+        }
+
+        .sugar-opt:hover {
+            color: var(--verde-escuro);
+        }
+
+        .sugar-opt.active {
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            box-shadow: 0 2px 6px rgba(111, 123, 82, 0.25);
+        }
+
+        /* ===== ABAS NÍVEL 2: Formato ===== */
+        .format-tabs {
+            display: flex;
+            gap: 6px;
+            padding: 0 8px 10px 8px;
+            justify-content: center;
+        }
+
+        .format-tab-btn {
+            background-color: rgba(216, 168, 168, 0.1);
+            border: 1.5px solid rgba(216, 168, 168, 0.25);
+            color: #b08888;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: var(--transicao);
+        }
+
+        .format-tab-btn:hover {
+            border-color: var(--rosa-medio);
+            background-color: rgba(216, 168, 168, 0.18);
+        }
+
+        .format-tab-btn.active {
+            background-color: var(--rosa-medio);
+            color: var(--branco);
+            border-color: var(--rosa-medio);
+            box-shadow: 0 2px 6px rgba(216, 168, 168, 0.3);
+        }
+
+        /* Info do formato selecionado */
+        .format-info {
+            text-align: center;
+            padding: 0 8px 14px;
+            font-size: 0.72rem;
+            color: #889476;
+            line-height: 1.4;
+        }
+
+        .format-info strong {
+            color: var(--verde-escuro);
+            font-weight: 600;
+        }
+
+        .format-dimension {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #889476;
+            margin: 2px 0 16px;
+            font-weight: 500;
         }
 
         /* Lista de Itens */
@@ -511,6 +658,7 @@
         .tag.tag-lactose { background-color: #f7edeb; color: #b86553; }
         .tag.tag-sugar { background-color: #ebf3f7; color: #43819e; }
         .tag.tag-protein { background-color: #ebf7ed; color: #3b874c; }
+        .tag.tag-demerara { background-color: #faf3e0; color: #8a6d3b; }
 
         /* Controles de Quantidade */
         .item-actions {
@@ -562,6 +710,67 @@
             font-weight: 600;
             min-width: 14px;
             text-align: center;
+        }
+
+        /* ===== UPSELL SECTION ===== */
+        .upsell-section {
+            padding: 20px 8px 8px;
+        }
+
+        .upsell-card {
+            border: 1.5px dashed rgba(111, 123, 82, 0.3);
+            border-radius: 16px;
+            padding: 16px;
+            background: linear-gradient(135deg, rgba(111, 123, 82, 0.04), rgba(216, 168, 168, 0.06));
+            position: relative;
+        }
+
+        .upsell-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--verde-escuro);
+            color: var(--branco);
+            font-size: 0.62rem;
+            font-weight: 600;
+            padding: 3px 12px;
+            border-radius: 12px;
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+
+        .upsell-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-top: 4px;
+        }
+
+        .upsell-info {
+            flex-grow: 1;
+        }
+
+        .upsell-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+            margin-bottom: 2px;
+        }
+
+        .upsell-desc {
+            font-size: 0.68rem;
+            color: #889476;
+            line-height: 1.3;
+        }
+
+        .upsell-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+            flex-shrink: 0;
         }
 
         /* Sacola / Cart Flutuante Inferior */
@@ -966,26 +1175,6 @@
                 <svg class="link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </a>
 
-            <!-- Post Instagram: Bolo de Banana -->
-            <div class="insta-post">
-                <div class="insta-post-header">
-                    <div class="insta-avatar">
-                        <img src="jeha-logo.png" alt="jeha.">
-                    </div>
-                    <div class="insta-info">
-                        <span class="insta-username">@cris.jeha</span>
-                        <span class="insta-local">Barra da Tijuca, RJ</span>
-                    </div>
-                </div>
-                <div class="insta-photo-wrapper">
-                    <img src="bolo-banana.jpeg" alt="Bolo de Banana Funcional da JEHA" class="insta-photo">
-                </div>
-                <div class="insta-caption">
-                    <strong>Bolo de Banana</strong> — Fofinho, úmido e naturalmente adoçado. Com banana d'água madura e uma pitada de canela que aquece a alma.
-                    <div class="insta-tags">#bolofuncional #bolosaudavel #jeha #crisjeha #bolobananaverde</div>
-                </div>
-            </div>
-
         </main>
 
         <!-- Seção Quem Sou -->
@@ -1017,27 +1206,38 @@
                 <button class="close-menu-btn" id="close-menu-btn">&times;</button>
             </div>
 
-            <!-- Foto Destaque: Bolo de Banana -->
-            <div class="menu-hero-banner" id="menu-hero-banner" style="height: auto; padding: 0; background: none; overflow: hidden; border-radius: 16px;">
-                <img
-                    src="bolo-banana.jpeg"
-                    alt="Bolo de Banana Funcional da JEHA"
-                    style="width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; border-radius: 16px;"
-                >
+            <!-- Slider de Fotos -->
+            <div class="menu-hero-slider" id="menu-hero-slider">
+                <div class="slider-track" id="slider-track">
+                    <img src="Bolo Choco Noir.jpeg" alt="Bolo Choco Noir" class="slider-img">
+                    <img src="muffin.jpeg" alt="Muffin JEHA" class="slider-img">
+                </div>
+                <div class="slider-dots" id="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
             </div>
 
-            <!-- Categorias -->
-            <div class="menu-tabs">
-                <button class="tab-btn active" data-category="bolos">Bolos</button>
-                <span class="tag tag-protein" style="font-size: 0.7rem; padding: 4px 10px;">Sem Glúten</span>
-                <span class="tag tag-lactose" style="font-size: 0.7rem; padding: 4px 10px;">Sem Lactose</span>
-                <span class="tag tag-sugar" style="font-size: 0.7rem; padding: 4px 10px;">Sem Açúcar</span>
+            <!-- Info do Cardápio -->
+            <div class="menu-info-header">
+                <p class="menu-info-text">🌿 Todos os produtos são <strong>sem glúten</strong>, <strong>sem lactose</strong> e <strong>sem açúcar</strong>.</p>
             </div>
+
+            <!-- ═══ ABAS NÍVEL 2: Formato ═══ -->
+            <div class="format-tabs" id="format-tabs">
+                <button class="format-tab-btn active" data-format="bolos">Bolos</button>
+                <button class="format-tab-btn" data-format="muffins">Muffins</button>
+            </div>
+
+            <!-- Dimensão do formato -->
+            <p class="format-dimension" id="format-dimension"></p>
 
             <!-- Lista de Produtos -->
             <div class="menu-items" id="menu-items-list">
                 <!-- Injetados dinamicamente via JS -->
             </div>
+
+            <!-- Upsell removido -->
         </section>
 
         <!-- Nossa Filosofia -->
@@ -1155,125 +1355,204 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- JAVASCRIPT — CARDÁPIO JEHA v2 (Categorias + Formatos)    -->
+    <!-- ══════════════════════════════════════════════════════════ -->
     <script>
-        // Dados dos Doces Saudáveis da JEHA
-        const products = {
-            bolos: [
-                { id: 'bo1', name: 'Bolo de Cenoura com Brigadeiro Funcional', price: 34.00, desc: 'Massa fofinha com cobertura de brigadeiro de biomassa de banana verde com cacau 100%. Indulgente, funcional e irresistível a cada fatia.', tags: ['Brigadeiro Funcional', 'Fofinho'] },
-                { id: 'bo2', name: 'Bolo de Laranja', price: 28.00, desc: 'Suco natural de laranja na massa, leve e cítrico. Refrescante e com aquele toque de alegria que ilumina o dia.', tags: ['Cítrico', 'Leve'] },
-                { id: 'bo3', name: 'Bolo de Baunilha', price: 28.00, desc: 'Clássico reinventado com ingredientes saudáveis. Suave, aerado e reconfortante como um abraço em cada pedaço.', tags: ['Clássico', 'Massa Aerada'] },
-                { id: 'bo4', name: 'Bolo de Milho', price: 28.00, desc: 'Flocão de milho com gostinho da roça. Fofinho, úmido e com aquele aconchego de sabores que a gente nunca esquece.', tags: ['Flocão', 'Sabor da Roça'] },
-                { id: 'bo5', name: 'Bolo de Maçã com Canela', price: 29.00, desc: 'Pedaços de maçã fresca com toque de canela. Aromático e com aquele aconchego de tarde especial.', tags: ['Com Amêndoas', 'Aromático'] },
-                { id: 'bo6', name: 'Bolo de Tapioca', price: 34.00, desc: 'Mix de farinhas naturais com tapioca, leite de côco e côco ralado sem açúcar. Leve, nutritivo e com aquela textura úmida irresistível.', tags: ['Tapioca', 'Leite de Côco'] },
-                { id: 'bo7', name: 'Bolo de Banana', price: 28.00, desc: 'Banana madura, aveia, passas e especiarias naturais. Macio, cheio de energia e com aquele sabor que aquece a alma.', tags: ['Com Passas', 'Aveia'] },
-                { id: 'bo8', name: 'Bolo Mesclado', price: 32.00, desc: 'Harmoniza massa de baunilha e chocolate. Equilibrado, sofisticado e irresistível para quem não consegue escolher só um sabor.', tags: ['Dois Sabores', 'Baunilha & Chocolate'] },
-                { id: 'bo9', name: 'Bolo Chocolate Black', price: 32.00, desc: 'Cacau intenso 100%, textura fofa e sabor marcante. Profundo, aveludado e com aquele poder de transformar qualquer momento em algo especial.', tags: ['Cacau 100%', 'Intenso'] },
-                { id: 'bo10', name: 'Bolo de Limão com Mirtilo', price: 34.00, desc: 'Frescor do limão combinado com mirtilos naturais. Vibrante, antioxidante e com aquele equilíbrio perfeito entre o cítrico e o doce.', tags: ['Cítrico', 'Com Frutas'] },
-                { id: 'bo11', name: 'Bolo de Paçoquinha', price: 28.00, desc: 'Massa macia com sabor marcante de amendoim, toda a nostalgia da paçoca numa versão funcional e sem culpa. Irresistível, afetivo e com aquele gostinho que a gente nunca esquece.', tags: ['Amendoim', 'Nostalgia'] }
-            ]
+        // ══════════════════════════════════════════════
+        // DADOS DO CATÁLOGO JEHA (simplificado)
+        // PREÇOS PLACEHOLDER — confirmar com a Cris
+        // ══════════════════════════════════════════════
+
+        const FORMATOS = {
+            bolos: {
+                nome: 'Bolos',
+                dimensao: 'Sem glúten · Sem lactose · Zero açúcar',
+                fotos: [
+                    { src: 'Bolo Choco Noir.jpeg', alt: 'Bolo Choco Noir' }
+                ],
+                sabores: [
+                    { id: 'bolo-choco-protein', name: 'Choco Protein', price: 44.00, desc: 'Massa fofinha feita com cacau 100% e whey protein e mix de farinhas sem glúten, sem lactose e zero açúcar. Finalizados com gotas de Dr.Peanut.', tags: ['Whey Protein', '~320g'] },
+                    { id: 'bolo-choco-noir',    name: 'Choco Noir',    price: 36.90, desc: 'Massa de sabor intenso de cacau 100% e mix de farinhas. Sem glúten, sem lactose e zero açúcar. Finalizado com uma ganache de chocolate.', tags: ['Cacau Intenso', '~310g'] },
+                    { id: 'bolo-choco-free',    name: 'Choco Free',    price: 38.80, desc: 'Massa de cacau 100% e mix de farinhas sem glúten, sem oleaginosas, sem lactose e zero açúcar. Finalizado com ganache de chocolate.', tags: ['Sem Oleaginosas', '~310g'] }
+                ]
+            },
+            muffins: {
+                nome: 'Muffins',
+                dimensao: 'Porção individual · ~70g cada',
+                fotos: [
+                    { src: 'muffin.jpeg', alt: 'Muffin JEHA' }
+                ],
+                sabores: [
+                    { id: 'muf-choco-protein', name: 'Muffin Choco Protein', price: 14.00, desc: 'Massa fofinha feita com cacau 100% e whey protein e mix de farinhas sem glúten, sem lactose e zero açúcar. Finalizados com gotas de Dr.Peanut.', tags: ['Whey Protein', 'Individual'] },
+                    { id: 'muf-choco-noir',    name: 'Muffin Choco Noir',    price: 12.80, desc: 'Massa de sabor intenso de cacau 100% e mix de farinhas. Sem glúten, sem lactose e zero açúcar. Finalizado com uma ganache de chocolate.', tags: ['Cacau Intenso', 'Individual'] },
+                    { id: 'muf-choco-free',    name: 'Muffin Choco Free',    price: 12.80, desc: 'Massa de cacau 100% e mix de farinhas sem glúten, sem oleaginosas, sem lactose e zero açúcar. Finalizado com ganache de chocolate.', tags: ['Sem Oleaginosas', 'Individual'] }
+                ]
+            }
         };
 
-        // Estado da Sacola
+        // ══════ Estado do App ══════
         let cart = {};
+        let currentFormat = 'bolos';
 
-        // Carrossel Automático
+        // Busca um produto por ID
+        function findProduct(id) {
+            if (id === 'upsell-brigadeiro') return { ...UPSELL_BRIGADEIRO };
+            for (const fmtKey in FORMATOS) {
+                const fmt = FORMATOS[fmtKey];
+                const found = fmt.sabores.find(s => s.id === id);
+                if (found) return { ...found, formatoNome: fmt.nome };
+            }
+            return null;
+        }
+
+        // Carrossel (guarda para caso não haja elementos)
         (function() {
             const track = document.getElementById('carousel-track');
             const dots = document.querySelectorAll('.carousel-dot');
+            if (!track || dots.length === 0) return;
             let current = 0;
             const total = dots.length;
             let timer;
-
             function goTo(index) {
                 current = index;
                 track.style.transform = `translateX(-${current * 100}%)`;
                 dots.forEach((d, i) => d.classList.toggle('active', i === current));
             }
-
-            function next() {
-                goTo((current + 1) % total);
-            }
-
-            function startTimer() {
-                clearInterval(timer);
-                timer = setInterval(next, 3000);
-            }
-
+            function next() { goTo((current + 1) % total); }
+            function startTimer() { clearInterval(timer); timer = setInterval(next, 3000); }
             dots.forEach(dot => {
-                dot.addEventListener('click', () => {
-                    goTo(parseInt(dot.dataset.index));
-                    startTimer();
-                });
+                dot.addEventListener('click', () => { goTo(parseInt(dot.dataset.index)); startTimer(); });
             });
-
             startTimer();
         })();
 
-        // Elementos DOM
-        const mainLinks = document.getElementById('main-links');
-        const menuSection = document.getElementById('menu-section');
-        const openMenuBtn = document.getElementById('open-menu-btn');
-        const closeMenuBtn = document.getElementById('close-menu-btn');
-        const openAboutBtn = document.getElementById('open-about-btn');
-        const closeAboutBtn = document.getElementById('close-about-btn');
-        const aboutSection = document.getElementById('about-section');
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const menuItemsList = document.getElementById('menu-items-list');
-        const cartBar = document.getElementById('cart-bar');
-        const cartSummary = document.getElementById('cart-summary');
-        const cartTotal = document.getElementById('cart-total');
-        const sendOrderBtn = document.getElementById('send-order-btn');
-        const shareBtn = document.getElementById('share-btn');
-        const toast = document.getElementById('toast');
+        // ══════ DOM Elements ══════
+        const mainLinks      = document.getElementById('main-links');
+        const menuSection     = document.getElementById('menu-section');
+        const openMenuBtn     = document.getElementById('open-menu-btn');
+        const closeMenuBtn    = document.getElementById('close-menu-btn');
+        const openAboutBtn    = document.getElementById('open-about-btn');
+        const closeAboutBtn   = document.getElementById('close-about-btn');
+        const aboutSection    = document.getElementById('about-section');
+        const menuItemsList   = document.getElementById('menu-items-list');
+        const cartBar         = document.getElementById('cart-bar');
+        const cartSummary     = document.getElementById('cart-summary');
+        const cartTotal       = document.getElementById('cart-total');
+        const sendOrderBtn    = document.getElementById('send-order-btn');
+        const shareBtn        = document.getElementById('share-btn');
+        const toast           = document.getElementById('toast');
+        const formatTabs      = document.querySelectorAll('.format-tab-btn');
 
-        // Abre Quem Sou
+        // ══════ Abre/Fecha Quem Sou ══════
         openAboutBtn.addEventListener('click', () => {
             mainLinks.style.display = 'none';
             aboutSection.classList.add('active');
         });
-
-        // Fecha Quem Sou
         closeAboutBtn.addEventListener('click', () => {
             aboutSection.classList.remove('active');
             mainLinks.style.display = 'flex';
         });
 
-        // Abre o Cardápio
+        // ══════ Abre/Fecha Cardápio ══════
         openMenuBtn.addEventListener('click', () => {
             mainLinks.style.display = 'none';
             menuSection.classList.add('active');
-            renderCategory('bolos');
+            currentFormat = 'caseirinho';
+            // Reset tab UI
+            formatTabs.forEach((b, i) => b.classList.toggle('active', i === 0));
+            renderItems();
         });
-
-        // Fecha o Cardápio
         closeMenuBtn.addEventListener('click', () => {
             menuSection.classList.remove('active');
             mainLinks.style.display = 'flex';
         });
 
-        // Seleção de Abas
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                tabBtns.forEach(b => b.classList.remove('active'));
+
+        // ══════ Slider de Fotos ══════
+        let sliderInterval = null;
+        let sliderIndex = 0;
+
+        function updateSlider(fotos) {
+            const track = document.getElementById('slider-track');
+            const dotsContainer = document.getElementById('slider-dots');
+            if (!track || !dotsContainer) return;
+
+            // Limpa autoplay anterior
+            if (sliderInterval) clearInterval(sliderInterval);
+            sliderIndex = 0;
+
+            // Reconstrói imagens
+            track.innerHTML = fotos.map(f => `<img src="${f.src}" alt="${f.alt}" class="slider-img">`).join('');
+
+            // Reconstrói dots
+            dotsContainer.innerHTML = fotos.map((_, i) => `<span class="dot${i === 0 ? ' active' : ''}"></span>`).join('');
+
+            // Posiciona no primeiro
+            track.style.transform = 'translateX(0)';
+
+            // Se só 1 foto, esconde dots e não faz autoplay
+            dotsContainer.style.display = fotos.length <= 1 ? 'none' : 'flex';
+            if (fotos.length <= 1) return;
+
+            // Autoplay a cada 3s
+            sliderInterval = setInterval(() => {
+                sliderIndex = (sliderIndex + 1) % fotos.length;
+                track.style.transform = `translateX(-${sliderIndex * 100}%)`;
+                dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === sliderIndex));
+            }, 3000);
+
+            // Click nos dots
+            dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.addEventListener('click', () => {
+                    sliderIndex = i;
+                    track.style.transform = `translateX(-${i * 100}%)`;
+                    dotsContainer.querySelectorAll('.dot').forEach((d, j) => d.classList.toggle('active', j === i));
+                    // Reinicia timer
+                    clearInterval(sliderInterval);
+                    sliderInterval = setInterval(() => {
+                        sliderIndex = (sliderIndex + 1) % fotos.length;
+                        track.style.transform = `translateX(-${sliderIndex * 100}%)`;
+                        dotsContainer.querySelectorAll('.dot').forEach((d, j) => d.classList.toggle('active', j === sliderIndex));
+                    }, 3000);
+                });
+            });
+        }
+
+
+        // ══════ Clique nas Abas de Formato ══════
+        formatTabs.forEach(btn => {
+            btn.addEventListener('click', () => {
+                formatTabs.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-                renderCategory(btn.dataset.category);
+                currentFormat = btn.dataset.format;
+                renderItems();
             });
         });
 
-        // Renderiza itens da categoria selecionada
-        function renderCategory(cat) {
-            const list = products[cat];
+
+        // ══════ Renderiza Sabores ══════
+        function renderItems() {
+            const fmt = FORMATOS[currentFormat];
+            const list = fmt.sabores;
             menuItemsList.innerHTML = '';
+
+            // Mostra dimensão do formato
+            const dimEl = document.getElementById('format-dimension');
+            if (dimEl) dimEl.textContent = `📐 ${fmt.dimensao}`;
+
+            // Atualiza slider de fotos
+            updateSlider(fmt.fotos);
 
             list.forEach(p => {
                 const qty = cart[p.id] || 0;
-                
+
                 // Tags HTML
                 const tagsHTML = p.tags.map(t => {
                     let tagClass = 'tag-lactose';
-                    if (t.includes('Açúcar') || t.includes('Zero')) tagClass = 'tag-sugar';
-                    if (t.includes('Prote') || t.includes('Funcional')) tagClass = 'tag-protein';
+                    if (t.includes('Demerara') || t.includes('Rústico')) tagClass = 'tag-demerara';
+                    else if (t.includes('Açúcar') || t.includes('Zero') || t.includes('Cacau') || t.includes('Intenso') || t.includes('Aveludado') || t.includes('Caramelado')) tagClass = 'tag-sugar';
+                    else if (t.includes('Prote') || t.includes('Funcional') || t.includes('Premium') || t.includes('Sofisticado')) tagClass = 'tag-protein';
                     return `<span class="tag ${tagClass}">${t}</span>`;
                 }).join('');
 
@@ -1288,9 +1567,9 @@
                     <div class="item-actions">
                         <span class="item-price">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
                         <div class="qty-controls">
-                            <button class="qty-btn" onclick="updateQty('${p.id}', -1, '${cat}')">-</button>
+                            <button class="qty-btn" onclick="updateQty('${p.id}', -1)">-</button>
                             <span class="qty-val">${qty}</span>
-                            <button class="qty-btn" onclick="updateQty('${p.id}', 1, '${cat}')">+</button>
+                            <button class="qty-btn" onclick="updateQty('${p.id}', 1)">+</button>
                         </div>
                     </div>
                 `;
@@ -1298,18 +1577,9 @@
             });
         }
 
-        // Atualiza Quantidade na Sacola
-        window.updateQty = function(id, change, cat) {
-            // Acha o produto nos dados
-            let product = null;
-            for (let c in products) {
-                const found = products[c].find(p => p.id === id);
-                if (found) {
-                    product = found;
-                    break;
-                }
-            }
-
+        // ══════ Atualiza Quantidade na Sacola ══════
+        window.updateQty = function(id, change) {
+            const product = findProduct(id);
             if (!product) return;
 
             const currentQty = cart[id] || 0;
@@ -1321,23 +1591,21 @@
                 cart[id] = newQty;
             }
 
-            // Atualiza tela
-            renderCategory(cat);
+            renderItems();
             updateCartBar();
+
+            // Atualiza qty do upsell brigadeiro se necessário
+            const upsellQtyEl = document.getElementById('upsell-qty');
+            if (upsellQtyEl) upsellQtyEl.textContent = cart['upsell-brigadeiro'] || 0;
         };
 
-        // Atualiza a sacola flutuante
+        // ══════ Atualiza a Sacola Flutuante ══════
         function updateCartBar() {
             let totalItems = 0;
             let totalPrice = 0;
 
-            for (let id in cart) {
-                // Acha o preço do produto
-                let p = null;
-                for (let c in products) {
-                    p = products[c].find(prod => prod.id === id);
-                    if (p) break;
-                }
+            for (const id in cart) {
+                const p = findProduct(id);
                 if (p) {
                     totalItems += cart[id];
                     totalPrice += p.price * cart[id];
@@ -1353,7 +1621,9 @@
             }
         }
 
-        // ── Sistema de CEP ───────────────────────────────────────────
+        // ══════════════════════════════════════════════
+        // SISTEMA DE CEP (inalterado)
+        // ══════════════════════════════════════════════
         let cepTaxaAtual = 0;
         let cepBairroAtual = '';
         let cepEnderecoAtual = '';
@@ -1511,8 +1781,9 @@
             }
         }
 
+        // ══════ Enviar Pedido via WhatsApp (com CEP) ══════
         function confirmarPedidoComCep() {
-            // Salva TODOS os dados ANTES de fechar o modal (fecharModalCep() zeraria tudo)
+            // Salva dados ANTES de fechar o modal
             const taxa        = cepTaxaAtual;
             const bairro      = cepBairroAtual;
             const endereco    = cepEnderecoAtual;
@@ -1522,26 +1793,35 @@
 
             fecharModalCep();
 
-            let orderText = 'Olá Cris, quero encomendar estes bolos saudáveis da JEHA agora:\n\n';
+            let orderText = 'Olá Cris, quero encomendar da JEHA:\n\n';
             let totalProdutos = 0;
 
-            for (let id in cart) {
-                let p = null;
-                for (let c in products) {
-                    p = products[c].find(prod => prod.id === id);
-                    if (p) break;
-                }
+
+
+            // Agrupa itens por formato
+            const grouped = {};
+            for (const id in cart) {
+                const p = findProduct(id);
                 if (p) {
-                    const qty = cart[id];
-                    const subtotal = p.price * qty;
-                    orderText += `- ${qty}x ${p.name}: R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
-                    totalProdutos += subtotal;
+                    const key = p.formatoNome;
+                    if (!grouped[key]) grouped[key] = [];
+                    grouped[key].push({ ...p, qty: cart[id] });
                 }
+            }
+
+            for (const group in grouped) {
+                orderText += `📋 *${group}:*\n`;
+                grouped[group].forEach(item => {
+                    const subtotal = item.price * item.qty;
+                    orderText += `  - ${item.qty}x ${item.name}: R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+                    totalProdutos += subtotal;
+                });
+                orderText += '\n';
             }
 
             const totalFinal = totalProdutos + taxa;
 
-            orderText += `\nSubtotal: R$ ${totalProdutos.toFixed(2).replace('.', ',')}`;
+            orderText += `Subtotal: R$ ${totalProdutos.toFixed(2).replace('.', ',')}`;
 
             if (taxa > 0) {
                 orderText += `\n\nEntrega (${bairro}): R$ ${taxa.toFixed(2).replace('.', ',')}`;
@@ -1567,7 +1847,6 @@
 
         // Envia Pedido → Abre Modal de CEP
         sendOrderBtn.addEventListener('click', () => {
-            // Reseta botão confirmar para o texto padrão caso tenha sido alterado
             const confirmBtn = document.getElementById('cep-confirm-btn');
             confirmBtn.innerHTML = '✅ Confirmar e Enviar Pedido via WhatsApp <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
             abrirModalCep();
