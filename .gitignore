@@ -1,2 +1,26 @@
 # Local Netlify folder
 .netlify
+
+# Arquivos locais que nao servem ao projeto (backups, notas de IA, arquivos de edicao, pacotes)
+.gemini/
+.local/
+.netlify/
+_backup*/
+*.psd
+*.zip
+*.rar
+*.exe
+*.tar
+*.gz
+vite.config.ts.timestamp-*
+CREDENCIAIS*
+progress.md
+findings.md
+task_plan.md
+GEMINI.md
+gemini.md
+
+# Segredos
+.env
+.env.local
+.env.*.local

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jeha. — Cardápio Completo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #d4c4b8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .flyer {
+            width: 480px;
+            background: linear-gradient(180deg, 
+                #fdf0ea 0%, 
+                #f8e8e0 15%, 
+                #faf0ea 30%, 
+                #fdf2ec 50%, 
+                #f8e6de 70%, 
+                #fae8e0 85%, 
+                #f5ddd4 100%
+            );
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        /* Decorações florais via CSS */
+        .flyer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse 120px 100px at 0% 5%, rgba(168,195,158,0.25) 0%, transparent 70%),
+                radial-gradient(ellipse 100px 80px at 100% 3%, rgba(168,195,158,0.2) 0%, transparent 70%),
+                radial-gradient(ellipse 80px 60px at 95% 30%, rgba(216,168,168,0.15) 0%, transparent 70%),
+                radial-gradient(ellipse 90px 70px at 5% 50%, rgba(168,195,158,0.15) 0%, transparent 70%),
+                radial-gradient(ellipse 100px 80px at 100% 60%, rgba(168,195,158,0.2) 0%, transparent 70%),
+                radial-gradient(ellipse 120px 100px at 0% 85%, rgba(168,195,158,0.25) 0%, transparent 70%),
+                radial-gradient(ellipse 100px 80px at 100% 95%, rgba(216,168,168,0.2) 0%, transparent 70%),
+                radial-gradient(circle 40px at 15% 20%, rgba(216,168,168,0.18) 0%, transparent 70%),
+                radial-gradient(circle 35px at 88% 45%, rgba(216,168,168,0.15) 0%, transparent 70%),
+                radial-gradient(circle 45px at 10% 70%, rgba(216,168,168,0.2) 0%, transparent 70%),
+                radial-gradient(circle 30px at 92% 80%, rgba(168,195,158,0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .flyer-inner {
+            position: relative;
+            z-index: 1;
+            padding: 36px 32px 28px;
+        }
+
+        /* LOGO */
+        .logo-area {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-area img {
+            height: 130px;
+            width: auto;
+        }
+
+        /* SEÇÃO SAUDÁVEIS */
+        .healthy-title {
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .healthy-title h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: #6F7B52;
+            line-height: 1.3;
+        }
+
+        .healthy-sub {
+            text-align: center;
+            font-family: 'Fraunces', serif;
+            font-size: 0.78rem;
+            font-weight: 300;
+            color: #c4897a;
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+
+        /* PRODUTOS */
+        .product-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            padding-left: 8px;
+        }
+
+        .product-icon {
+            font-size: 1.1rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .product-text h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 0.92rem;
+            font-weight: 500;
+            color: #5a4a3a;
+            margin-bottom: 2px;
+        }
+
+        .product-text p {
+            font-size: 0.68rem;
+            color: #7a6a5a;
+            line-height: 1.45;
+        }
+
+        /* DIVIDER */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(111,123,82,0.2), transparent);
+            margin: 18px 0;
+        }
+
+        /* SEÇÃO TRADICIONAIS */
+        .trad-title {
+            text-align: center;
+            margin-bottom: 4px;
+        }
+
+        .trad-title h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: #6F7B52;
+            font-style: italic;
+        }
+
+        .trad-sub {
+            text-align: center;
+            font-family: 'Fraunces', serif;
+            font-size: 0.78rem;
+            font-weight: 300;
+            color: #c4897a;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        /* FORMATOS */
+        .formato-line {
+            font-size: 0.75rem;
+            color: #5a4a3a;
+            padding: 3px 0 3px 12px;
+            line-height: 1.5;
+        }
+
+        .formato-line strong {
+            font-weight: 600;
+        }
+
+        .formato-line span {
+            font-size: 0.68rem;
+            color: #889476;
+        }
+
+        /* BADGE */
+        .escolha-badge {
+            text-align: center;
+            margin: 16px 0 14px;
+        }
+
+        .escolha-badge span {
+            display: inline-block;
+            background: #6F7B52;
+            color: #fff;
+            font-size: 0.62rem;
+            font-weight: 700;
+            padding: 6px 20px;
+            border-radius: 100px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* DUAS COLUNAS */
+        .two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 16px;
+            padding: 0 4px;
+            margin-bottom: 6px;
+        }
+
+        .col-box {
+            background: rgba(255,255,255,0.45);
+            border: 1px solid rgba(111,123,82,0.12);
+            border-radius: 12px;
+            padding: 12px 14px;
+        }
+
+        .col-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: #6F7B52;
+            margin-bottom: 6px;
+        }
+
+        .col-list {
+            list-style: none;
+        }
+
+        .col-list li {
+            font-size: 0.7rem;
+            color: #5a4a3a;
+            padding: 2px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .col-list li::before {
+            content: '🌿';
+            font-size: 0.5rem;
+        }
+
+        /* COBERTURAS */
+        .cobert-section {
+            padding: 0 4px;
+            margin-bottom: 4px;
+        }
+
+        .cobert-label {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: #6F7B52;
+            margin-bottom: 6px;
+        }
+
+        .cobert-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .cobert-pill {
+            font-size: 0.66rem;
+            color: #5a4a3a;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.5);
+            border: 1px solid rgba(111,123,82,0.12);
+            border-radius: 100px;
+        }
+
+        /* FOOTER ICONS */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .footer-card {
+            text-align: center;
+            padding: 10px 4px;
+        }
+
+        .footer-card .ficon {
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+
+        .footer-card .flabel {
+            font-size: 0.58rem;
+            font-weight: 600;
+            color: #5a4a3a;
+            line-height: 1.3;
+        }
+
+        .footer-card .fvalue {
+            font-size: 0.58rem;
+            color: #889476;
+            margin-top: 1px;
+        }
+
+        /* BOTÕES */
+        .save-actions {
+            margin-top: 24px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .save-btn {
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            text-decoration: none;
+        }
+
+        .save-btn:hover { transform: translateY(-2px); }
+
+        .save-btn.primary {
+            background: #6F7B52;
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(111,123,82,0.35);
+        }
+
+        .save-btn.secondary {
+            background: #fff;
+            color: #6F7B52;
+            border: 2px solid #6F7B52;
+        }
+
+        @media print {
+            body { background: #fff !important; padding: 0 !important; }
+            .flyer { box-shadow: none !important; width: 100% !important; }
+            .save-actions { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="flyer">
+    <div class="flyer-inner">
+
+        <!-- LOGO -->
+        <div class="logo-area">
+            <img src="jeha-logo.png" alt="jeha.">
+        </div>
+
+        <!-- ═══ BOLOS SAUDÁVEIS ═══ -->
+        <div class="healthy-title">
+            <h2>Bolos sem glúten sem lactose Zero açúcar</h2>
+        </div>
+        <div class="healthy-sub">Formatos Bolo Inglês e Muffin</div>
+
+        <!-- Choco Noir -->
+        <div class="product-item">
+            <span class="product-icon">🫘</span>
+            <div class="product-text">
+                <h3>Bolo Choco Noir</h3>
+                <p>– cacau 100%<br>mix de farinhas sem glúten e ganache de chocolate sem lactose e zero açúcar</p>
+            </div>
+        </div>
+
+        <!-- Choco Free -->
+        <div class="product-item">
+            <span class="product-icon">🫘</span>
+            <div class="product-text">
+                <h3>Bolo Choco Free</h3>
+                <p>– cacau 100%<br>farinha sem glúten, zero oleaginosas, com ganache de chocolate</p>
+            </div>
+        </div>
+
+        <!-- Choco Protein -->
+        <div class="product-item">
+            <span class="product-icon">🫘</span>
+            <div class="product-text">
+                <h3>Bolo Choco Protein</h3>
+                <p>– cacau 100%,<br>whey protein e Dr. Peanut</p>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- ═══ BOLOS TRADICIONAIS ═══ -->
+        <div class="trad-title">
+            <h2>Bolos Tradicionais</h2>
+        </div>
+        <div class="trad-sub">Formatos</div>
+
+        <div class="formato-line">• <strong>Caseiro</strong> (22cm) &nbsp;<span>Massa + recheio</span></div>
+        <div class="formato-line">• <strong>Bolo de Festa</strong> (15cm, 20 cm, 25 cm) &nbsp;<span>Massa + recheio + cobertura</span></div>
+
+        <!-- ESCOLHA SEU BOLO -->
+        <div class="escolha-badge">
+            <span>Escolha seu bolo</span>
+        </div>
+
+        <!-- DUAS COLUNAS: Massas + Recheios -->
+        <div class="two-cols">
+            <div class="col-box">
+                <div class="col-label">Massas:</div>
+                <ul class="col-list">
+                    <li>Baunilha</li>
+                    <li>Chocolate</li>
+                    <li>Cenoura</li>
+                    <li>Laranja</li>
+                </ul>
+            </div>
+            <div class="col-box">
+                <div class="col-label">Recheios:</div>
+                <ul class="col-list">
+                    <li>Brigadeiro</li>
+                    <li>Brigadeiro branco</li>
+                    <li>Doce de leite</li>
+                    <li>Beijinho</li>
+                    <li>Nozes</li>
+                </ul>
+                <ul class="col-list" style="margin-top: 0;">
+                    <li>Prestígio</li>
+                    <li>Oreo</li>
+                    <li>Ninho</li>
+                    <li>Abacaxi</li>
+                    <li>Morango</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- COBERTURAS -->
+        <div class="cobert-section" style="margin-top: 10px;">
+            <div class="cobert-label">Coberturas:</div>
+            <div class="cobert-pills">
+                <span class="cobert-pill">Ganache de chocolate</span>
+                <span class="cobert-pill">Ganache de chocolate branco</span>
+                <span class="cobert-pill">Chantininho</span>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- FOOTER ICONS -->
+        <div class="footer-grid">
+            <div class="footer-card">
+                <div class="ficon">🕐</div>
+                <div class="flabel">Encomendas com<br>mínimo de 24 horas</div>
+                <div class="fvalue">de antecedência</div>
+            </div>
+            <div class="footer-card">
+                <div class="ficon">🚚</div>
+                <div class="flabel">Frete</div>
+                <div class="fvalue">a combinar</div>
+            </div>
+            <div class="footer-card">
+                <div class="ficon">📷</div>
+                <div class="flabel">Instagram</div>
+                <div class="fvalue">@cris.jeha</div>
+            </div>
+            <div class="footer-card">
+                <div class="ficon">💬</div>
+                <div class="flabel">WhatsApp</div>
+                <div class="fvalue">24-98848-8880</div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- BOTÕES -->
+<div class="save-actions">
+    <button class="save-btn primary" onclick="window.print()">🖨️ Salvar como PDF</button>
+    <a href="index.html" class="save-btn secondary">← Voltar</a>
+</div>
+
+</body>
+</html>

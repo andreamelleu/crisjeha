@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio jeha. — Bolos Tradicionais</title>
+
+    <!-- Preview WhatsApp / Redes Sociais -->
+    <meta property="og:title" content="Cardápio jeha. — Bolos Tradicionais">
+    <meta property="og:description" content="Bolos tradicionais sob encomenda. Escolha massa, recheio e cobertura! 🎂">
+    <meta property="og:image" content="https://crisjeha.netlify.app/jeha-logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://crisjeha.netlify.app/cardapio-tradicional.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="jeha.">
+    <meta name="description" content="Bolos tradicionais sob encomenda. Escolha massa, recheio e cobertura!">
+    <meta name="theme-color" content="#6F7B52">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        :root {
+            --verde: #6F7B52;
+            --rosa: #D8A8A8;
+            --creme: #FAF4F0;
+            --texto: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f5ece4;
+            background-image: url('jeha-bg-novo.jpg');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: var(--texto);
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 560px;
+            margin: 0 auto;
+            min-height: 100vh;
+            padding: 0 20px;
+        }
+
+        /* HEADER */
+        .header {
+            background: transparent;
+            padding: 20px 24px 0;
+            text-align: center;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .header-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-logo img {
+            height: 160px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-tagline {
+            color: #6F7B52 !important;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 2px;
+            letter-spacing: 0.05em;
+        }
+
+        /* NAV TABS */
+        .nav-tabs {
+            display: flex;
+            gap: 0;
+            padding: 0 48px;
+            background: transparent;
+            border-bottom: 1.5px solid #d0c8c0;
+        }
+
+        .nav-tab {
+            flex: 1;
+            text-align: center;
+            padding: 14px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #889476;
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab:hover {
+            color: var(--verde);
+        }
+
+        .nav-tab.active {
+            color: var(--verde);
+            border-bottom-color: var(--verde);
+        }
+
+        /* SECTION TITLE */
+        .section-title {
+            padding: 28px 48px 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #6F7B52;
+            font-style: italic;
+        }
+
+        .section-title .line {
+            flex: 1;
+            height: 1.5px;
+            background: #c8b8ae;
+        }
+
+        .section-subtitle {
+            padding: 0 48px 16px;
+            font-size: 0.72rem;
+            color: #889476;
+            font-weight: 500;
+        }
+
+        /* FORMAT CARDS */
+        .format-card {
+            background: linear-gradient(135deg, rgba(111,123,82,0.06), rgba(216,168,168,0.08));
+            border: 1.5px solid #d0c8c0;
+            border-radius: 14px;
+            padding: 18px 22px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .format-card:hover {
+            border-color: #b8a898;
+            box-shadow: 0 4px 16px rgba(111,123,82,0.08);
+        }
+
+        .format-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .format-icon {
+            font-size: 1.2rem;
+        }
+
+        .format-name {
+            font-family: 'Fraunces', serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: #111;
+        }
+
+        .format-sizes {
+            display: flex;
+            gap: 6px;
+        }
+
+        .size-badge {
+            font-size: 0.68rem;
+            color: #889476;
+            font-weight: 600;
+            background: #e8e0d8;
+            padding: 3px 10px;
+            border-radius: 100px;
+            border: 1px solid #c8b8a8;
+        }
+
+        .format-desc {
+            font-size: 0.76rem;
+            color: #555;
+            line-height: 1.5;
+            margin-top: 2px;
+        }
+
+        /* CHOICES */
+        .choices-section {
+            padding: 0 48px;
+        }
+
+        .choices-title {
+            font-family: 'Fraunces', serif;
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: #6F7B52;
+            font-style: italic;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid rgba(111,123,82,0.15);
+        }
+
+        .choice-group {
+            margin-bottom: 22px;
+        }
+
+        .choice-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #6F7B52;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .choice-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(111,123,82,0.12);
+        }
+
+        .choice-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill {
+            font-size: 0.78rem;
+            color: #333;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #FAF4F0 0%, #f5ede6 100%);
+            border: 1.5px solid #d8ccc2;
+            border-radius: 100px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .pill:hover {
+            background: linear-gradient(135deg, #f0e5dc 0%, #ede0d6 100%);
+            border-color: #c0b0a0;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(111,123,82,0.08);
+        }
+
+        /* UPSELL / ENCOMENDA */
+        .upsell {
+            margin: 24px 48px;
+            padding: 18px 22px;
+            border: 1.5px dashed rgba(111, 123, 82, 0.35);
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(111, 123, 82, 0.06), rgba(216, 168, 168, 0.08));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .upsell-info {
+            flex: 1;
+        }
+
+        .upsell-label {
+            font-size: 0.64rem;
+            font-weight: 700;
+            color: #6F7B52;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .upsell-name {
+            font-family: 'Fraunces', serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #111;
+        }
+
+        .upsell-desc {
+            font-size: 0.72rem;
+            color: #666;
+            margin-top: 4px;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+        .footer {
+            margin: 24px 48px;
+            padding: 20px 24px;
+            background: linear-gradient(135deg, #ede5dc, #f0ebe5) !important;
+            border-radius: 12px;
+            border: 1.5px solid #d0c8c0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .footer-text {
+            font-size: 0.78rem;
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        .footer-text strong {
+            color: #6F7B52;
+            font-weight: 700;
+        }
+
+        .footer-contact {
+            text-align: right;
+            font-size: 0.75rem;
+            color: #444444;
+        }
+
+        .footer-contact a {
+            color: #6F7B52;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* PRINT */
+        @media print {
+            @page { size: A4; margin: 0; }
+            body { background: #fff !important; margin: 0 !important; min-height: 0 !important; height: auto !important; }
+            .page { max-width: 100% !important; background: #fff !important; box-shadow: none !important; min-height: 0 !important; height: auto !important; }
+            .no-print { display: none !important; }
+            .nav-tabs { display: none !important; }
+
+            .header {
+                background: #FAF4F0 !important;
+                padding: 20px 32px 16px !important;
+            }
+            .header-logo img { height: 90px !important; }
+
+            .section-title { padding: 14px 32px 4px !important; }
+            .section-title h2 { font-size: 1.1rem !important; }
+            .section-subtitle { padding: 0 32px 8px !important; }
+
+            .choices-section { padding: 0 32px !important; }
+            .upsell { margin: 12px 32px !important; padding: 12px 16px !important; }
+            .footer { margin: 12px 32px !important; padding: 12px 18px !important; }
+
+            .format-card { page-break-inside: avoid; }
+            .pill { background: #FAF4F0 !important; }
+        }
+
+        /* PRINT BUTTON */
+        .print-btn {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: #6F7B52;
+            color: #fff;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 100px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(111,123,82,0.35);
+            transition: all 0.3s ease;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(111,123,82,0.45);
+        }
+
+        /* BACK BUTTON */
+        .back-btn {
+            position: fixed;
+            bottom: 28px;
+            left: 28px;
+            background: #fff;
+            color: #6F7B52;
+            border: 2px solid #6F7B52;
+            padding: 14px 24px;
+            border-radius: 100px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 20px rgba(111,123,82,0.15);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: #6F7B52;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(111,123,82,0.35);
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-logo"><img src="jeha-logo.png" alt="jeha. logo oficial"></div>
+</div>
+
+<div class="page">
+
+    <!-- TAGLINE -->
+    <div style="text-align: center; padding: 4px 24px 0;">
+        <div class="header-tagline">Confeitaria Artesanal & Funcional</div>
+    </div>
+
+    <!-- NAVEGAÇÃO -->
+    <div class="nav-tabs no-print">
+        <a href="cardapio-jeha.html" class="nav-tab">🌿 Saudáveis</a>
+        <a href="cardapio-tradicional.html" class="nav-tab active">🎂 Tradicionais</a>
+    </div>
+
+    <!-- ═══ BOLOS TRADICIONAIS ═══ -->
+    <div class="section-title">
+        <h2>Bolos Tradicionais</h2>
+        <div class="line"></div>
+    </div>
+    <div class="section-subtitle">Monte o bolo do seu jeito</div>
+
+    <!-- FORMATOS -->
+    <div style="padding: 0 48px; margin-bottom: 24px;">
+        <div style="font-size: 0.72rem; font-weight: 700; color: #6F7B52; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+            Formatos
+            <span style="flex:1; height:1px; background: rgba(111,123,82,0.12);"></span>
+        </div>
+
+        <!-- Caseiro -->
+        <div class="format-card">
+            <div class="format-header">
+                <span class="format-icon">🍰</span>
+                <span class="format-name">Caseiro</span>
+                <div class="format-sizes">
+                    <span class="size-badge">22cm</span>
+                </div>
+            </div>
+            <div class="format-desc">Massa + recheio</div>
+        </div>
+
+        <!-- Bolo de Festa -->
+        <div class="format-card" style="background: linear-gradient(135deg, rgba(216,168,168,0.08), rgba(111,123,82,0.06));">
+            <div class="format-header">
+                <span class="format-icon">🎂</span>
+                <span class="format-name">Bolo de Festa</span>
+                <div class="format-sizes">
+                    <span class="size-badge">15cm</span>
+                    <span class="size-badge">20cm</span>
+                    <span class="size-badge">25cm</span>
+                </div>
+            </div>
+            <div class="format-desc">Massa + recheio + cobertura</div>
+        </div>
+    </div>
+
+    <!-- ESCOLHA SEU BOLO -->
+    <div class="choices-section">
+        <div class="choices-title">Escolha seu bolo</div>
+
+        <!-- Massas -->
+        <div class="choice-group">
+            <div class="choice-label">Massas</div>
+            <div class="choice-pills">
+                <span class="pill">Baunilha</span>
+                <span class="pill">Chocolate</span>
+                <span class="pill">Cenoura</span>
+                <span class="pill">Laranja</span>
+            </div>
+        </div>
+
+        <!-- Recheios -->
+        <div class="choice-group">
+            <div class="choice-label">Recheios</div>
+            <div class="choice-pills">
+                <span class="pill">Brigadeiro</span>
+                <span class="pill">Brigadeiro branco</span>
+                <span class="pill">Doce de leite</span>
+                <span class="pill">Beijinho</span>
+                <span class="pill">Nozes</span>
+                <span class="pill">Prestígio</span>
+                <span class="pill">Oreo</span>
+                <span class="pill">Ninho</span>
+                <span class="pill">Abacaxi</span>
+                <span class="pill">Morango</span>
+            </div>
+        </div>
+
+        <!-- Coberturas -->
+        <div class="choice-group">
+            <div class="choice-label">Coberturas</div>
+            <div class="choice-pills">
+                <span class="pill">Ganache de chocolate</span>
+                <span class="pill">Ganache de chocolate branco</span>
+                <span class="pill">Chantininho</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- AVISO ENCOMENDA -->
+    <div class="upsell">
+        <div class="upsell-info">
+            <div class="upsell-label">📋 Encomendas</div>
+            <div class="upsell-name">Mínimo 24 horas de antecedência</div>
+            <div class="upsell-desc">Frete a combinar · Consulte preços e disponibilidade</div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div style="padding: 24px 20px 8px; border-top: 1px solid rgba(111,123,82,0.15); margin-top: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; text-align: center;">
+            <div style="flex: 1;">
+                <div style="font-size: 0.6rem; font-weight: 700; color: #6F7B52; text-transform: uppercase; letter-spacing: 0.04em;">Encomendas</div>
+                <div style="font-size: 0.62rem; color: #666; margin-top: 2px;">mín. 24h de antecedência</div>
+            </div>
+            <div style="width: 1px; height: 28px; background: rgba(111,123,82,0.15);"></div>
+            <div style="flex: 0.7;">
+                <div style="font-size: 0.6rem; font-weight: 700; color: #6F7B52; text-transform: uppercase; letter-spacing: 0.04em;">Frete</div>
+                <div style="font-size: 0.62rem; color: #666; margin-top: 2px;">a combinar</div>
+            </div>
+            <div style="width: 1px; height: 28px; background: rgba(111,123,82,0.15);"></div>
+            <a href="https://instagram.com/cris.jeha" target="_blank" style="flex: 0.7; text-decoration: none;">
+                <div style="font-size: 0.6rem; font-weight: 700; color: #6F7B52; text-transform: uppercase; letter-spacing: 0.04em;">Instagram</div>
+                <div style="font-size: 0.62rem; color: #666; margin-top: 2px;">@cris.jeha</div>
+            </a>
+            <div style="width: 1px; height: 28px; background: rgba(111,123,82,0.15);"></div>
+            <a href="https://wa.me/5524988488880" target="_blank" style="flex: 0.8; text-decoration: none;">
+                <div style="font-size: 0.6rem; font-weight: 700; color: #6F7B52; text-transform: uppercase; letter-spacing: 0.04em;">WhatsApp</div>
+                <div style="font-size: 0.62rem; color: #666; margin-top: 2px;">(24) 98848-8880</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- ASSINATURA -->
+    <div style="padding: 16px 48px 28px; text-align: center;">
+        <span style="font-family: 'Fraunces', serif; font-size: 0.82rem; font-weight: 400; color: #6F7B52;">jeha.</span>
+        <span style="font-size: 0.65rem; color: #6F7B52;">&nbsp;·&nbsp;</span>
+        <span style="font-size: 0.65rem; color: #6F7B52;">Confeitaria Artesanal & Funcional</span>
+        <span style="font-size: 0.65rem; color: #6F7B52;">&nbsp;·&nbsp;</span>
+        <span style="font-size: 0.65rem; color: #6F7B52;">Barra da Tijuca, RJ</span>
+        <span style="font-size: 0.65rem; color: #6F7B52;">&nbsp;·&nbsp;</span>
+        <span style="font-size: 0.65rem; color: #6F7B52; font-style: italic;">Doçura que faz bem</span>
+    </div>
+
+</div>
+
+<!-- BOTÃO SALVAR PDF -->
+<button class="print-btn no-print" onclick="window.print()">
+    🖨️ Salvar como PDF
+</button>
+
+<a href="index.html" class="back-btn no-print">
+    ← Voltar ao App
+</a>
+
+</body>
+</html>

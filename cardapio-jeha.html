@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,27 @@
 
     <!-- Preview WhatsApp / Redes Sociais -->
     <meta property="og:title" content="Cardápio jeha. — Bolos Funcionais">
-    <meta property="og:description" content="Bolos artesanais sem glúten, sem lactose e sem açúcar. Confira nosso cardápio completo! 🌿">
+    <meta property="og:description"
+        content="Bolos artesanais sem glúten, sem lactose e sem açúcar. Confira nosso cardápio completo! 🌿">
     <meta property="og:image" content="https://crisjeha.netlify.app/jeha-logo.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://crisjeha.netlify.app/cardapio-jeha.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="jeha.">
-    <meta name="description" content="Bolos artesanais sem glúten, sem lactose e sem açúcar. Confira nosso cardápio completo!">
+    <meta name="description"
+        content="Bolos artesanais sem glúten, sem lactose e sem açúcar. Confira nosso cardápio completo!">
     <meta name="theme-color" content="#6F7B52">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         /* Força impressão de cores de fundo em todos os navegadores */
         * {
@@ -37,44 +46,48 @@
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #fff;
+            background-color: #f5ece4;
+            background-image: url('jeha-bg-novo.jpg');
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
             color: var(--texto);
             padding: 0;
+            min-height: 100vh;
         }
 
         .page {
-            max-width: 720px;
+            max-width: 560px;
             margin: 0 auto;
-            background: #fff;
             min-height: 100vh;
+            padding: 0 20px;
         }
 
         /* HEADER */
         .header {
-            background: #FAF4F0 !important;
-            background-color: #FAF4F0 !important;
-            padding: 40px 48px 32px;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 2px solid #e0d8d0;
+            background: transparent;
+            padding: 10px 24px 0;
+            text-align: center;
         }
 
         .header-logo {
             display: flex;
+            justify-content: center;
             align-items: center;
         }
 
         .header-logo img {
-            height: 150px;
+            height: 160px;
             width: auto;
             object-fit: contain;
         }
 
         .header-tagline {
             color: #6F7B52 !important;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            margin-top: 8px;
+            margin-top: -2px;
             letter-spacing: 0.05em;
         }
 
@@ -82,7 +95,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            margin-top: 20px;
+            margin-top: 6px;
             background: #6F7B52 !important;
             border: 1.5px solid #6F7B52;
             border-radius: 100px;
@@ -93,17 +106,48 @@
             letter-spacing: 0.04em;
         }
 
+        /* NAV TABS */
+        .nav-tabs {
+            display: flex;
+            gap: 0;
+            padding: 0 48px;
+            background: transparent;
+        }
+
+        .nav-tab {
+            flex: 1;
+            text-align: center;
+            padding: 14px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #889476;
+            text-decoration: none;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab:hover {
+            color: var(--verde);
+        }
+
+        .nav-tab.active {
+            color: var(--verde);
+            border-bottom-color: var(--verde);
+        }
+
         /* INTRO */
         .intro {
-            padding: 28px 48px 24px;
-            border-bottom: 1.5px solid #d0c8c0;
+            padding: 12px 48px 18px;
+            border-bottom: 1.5px solid rgba(111, 123, 82, 0.15);
         }
 
         .intro p {
-            font-size: 0.85rem;
-            line-height: 1.7;
-            color: #333333;
+            font-size: 0.72rem;
+            line-height: 1.5;
+            color: #555;
+            text-align: center;
             max-width: 540px;
+            margin: 0 auto;
         }
 
         /* SECTION TITLE */
@@ -153,7 +197,9 @@
             border-bottom: none;
         }
 
-        .item-info { flex: 1; }
+        .item-info {
+            flex: 1;
+        }
 
         .item-name {
             font-family: 'Fraunces', serif;
@@ -205,7 +251,7 @@
             padding: 14px 18px;
             border: 1.5px dashed rgba(111, 123, 82, 0.3);
             border-radius: 12px;
-            background: linear-gradient(135deg, rgba(111, 123, 82, 0.04), rgba(216, 168, 168, 0.06));
+            background: linear-gradient(135deg, rgba(111, 123, 82, 0.06), rgba(216, 168, 168, 0.08));
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -242,7 +288,7 @@
         .footer {
             margin: 24px 48px;
             padding: 20px 24px;
-            background: #f0ebe5 !important;
+            background: linear-gradient(135deg, #ede5dc, #f0ebe5) !important;
             border-radius: 12px;
             border: 1.5px solid #d0c8c0;
             display: flex;
@@ -285,23 +331,75 @@
             font-style: italic;
         }
 
+        /* Fundo do PDF — so aparece na impressao */
+        .bg-pdf {
+            display: none;
+        }
+
         /* PRINT — compacto para A4 */
         @media print {
-            body { background: #fff !important; margin: 0; }
-            .page { max-width: 100% !important; }
-            .no-print { display: none !important; }
+            .bg-pdf {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: fill;
+                z-index: -1;
+            }
+
+            .header,
+            .page {
+                position: relative;
+                z-index: 1;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            body {
+                background-color: #f5ece4 !important;
+                background-image: url("fundo-pdf.jpg") !important;
+                background-size: 100% 100% !important;
+                background-position: center top !important;
+                background-repeat: no-repeat !important;
+                background-attachment: scroll !important;
+                margin: 0 !important;
+                min-height: 100vh !important;
+                height: auto !important;
+            }
+
+            .page {
+                max-width: 100% !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                min-height: 0 !important;
+                height: auto !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
 
             .header {
-                background: #FAF4F0 !important;
-                background-color: #FAF4F0 !important;
+                background: transparent !important;
+                background-color: transparent !important;
                 padding: 20px 32px 16px !important;
             }
-            .header-logo img { height: 90px !important; }
+
+            .header-logo img {
+                height: 90px !important;
+            }
+
             .header-tagline {
                 color: #6F7B52 !important;
                 font-size: 0.75rem !important;
                 margin-top: 4px !important;
             }
+
             .header-badge {
                 color: #ffffff !important;
                 background: #6F7B52 !important;
@@ -310,37 +408,95 @@
                 font-size: 0.68rem !important;
             }
 
-            .intro { padding: 12px 32px 10px !important; }
-            .intro p { font-size: 0.76rem !important; line-height: 1.5 !important; }
+            .nav-tabs {
+                display: none !important;
+            }
 
-            .section-title { padding: 14px 32px 4px !important; }
-            .section-title h2 { font-size: 1.1rem !important; }
-            .section-subtitle { padding: 0 32px 8px !important; font-size: 0.66rem !important; }
+            .intro {
+                padding: 12px 175px 10px !important;
+            }
 
-            .items { padding: 0 32px !important; }
+            .intro p {
+                font-size: 0.76rem !important;
+                line-height: 1.5 !important;
+            }
+
+            .section-title {
+                padding: 14px 175px 4px !important;
+            }
+
+            .section-title h2 {
+                font-size: 1.1rem !important;
+            }
+
+            .section-subtitle {
+                padding: 0 175px 8px !important;
+                font-size: 0.66rem !important;
+            }
+
+            .items {
+                padding: 0 175px !important;
+            }
+
             .item {
                 padding: 8px 0 !important;
                 page-break-inside: avoid;
             }
-            .item-name { font-size: 0.92rem !important; margin-bottom: 2px !important; }
-            .item-desc { font-size: 0.68rem !important; line-height: 1.45 !important; }
-            .item-price { font-size: 0.95rem !important; }
-            .item-tags { margin-top: 3px !important; }
-            .tag { font-size: 0.58rem !important; padding: 1px 7px !important; }
 
-            .upsell { margin: 10px 32px !important; padding: 10px 14px !important; }
-            .obs { padding: 0 32px 8px !important; }
-            .obs p { font-size: 0.68rem !important; }
+            .item-name {
+                font-size: 0.92rem !important;
+                margin-bottom: 2px !important;
+            }
+
+            .item-desc {
+                font-size: 0.68rem !important;
+                line-height: 1.45 !important;
+            }
+
+            .item-price {
+                font-size: 0.95rem !important;
+            }
+
+            .item-tags {
+                margin-top: 3px !important;
+            }
+
+            .tag {
+                font-size: 0.58rem !important;
+                padding: 1px 7px !important;
+            }
+
+            .upsell {
+                margin: 10px 175px !important;
+                padding: 10px 14px !important;
+            }
+
+            .obs {
+                padding: 0 175px 8px !important;
+            }
+
+            .obs p {
+                font-size: 0.68rem !important;
+            }
 
             .footer {
                 background: #f0ebe5 !important;
-                margin: 12px 32px !important;
+                margin: 12px 175px !important;
                 padding: 12px 18px !important;
             }
-            .footer-text { font-size: 0.7rem !important; }
-            .footer-contact { font-size: 0.68rem !important; }
 
-            .tag { background: #e8e0d8 !important; color: #5a6640 !important; }
+            .footer-text {
+                font-size: 0.7rem !important;
+            }
+
+            .footer-contact {
+                font-size: 0.68rem !important;
+            }
+
+            .tag {
+                background: #e8e0d8 !important;
+                color: #5a6640 !important;
+            }
         }
 
         /* PRINT BUTTON */
@@ -360,13 +516,13 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 20px rgba(111,123,82,0.35);
+            box-shadow: 0 4px 20px rgba(111, 123, 82, 0.35);
             transition: all 0.3s ease;
         }
 
         .print-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(111,123,82,0.45);
+            box-shadow: 0 6px 24px rgba(111, 123, 82, 0.45);
         }
 
         /* BACK BUTTON */
@@ -386,7 +542,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 4px 20px rgba(111,123,82,0.15);
+            box-shadow: 0 4px 20px rgba(111, 123, 82, 0.15);
             transition: all 0.3s ease;
             text-decoration: none;
         }
@@ -395,129 +551,191 @@
             background: #6F7B52;
             color: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(111,123,82,0.35);
+            box-shadow: 0 6px 24px rgba(111, 123, 82, 0.35);
+        }
+        /* PRINT */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            body {
+                background-attachment: scroll !important;
+                background-size: 100% 100% !important;
+                background-position: center top !important;
+                min-height: 100vh !important;
+                height: auto !important;
+            }
+            .page {
+                box-shadow: none !important;
+            }
+            .header {
+                padding-top: 10px !important;
+            }
+            .no-print {
+                display: none !important;
+            }
         }
     </style>
 </head>
+
 <body>
 
-<div class="page">
+    <!-- Fundo do PDF: <img> real, imprime mesmo com "Graficos de segundo plano" desmarcado -->
+    <img class="bg-pdf" src="fundo-pdf.jpg" alt="">
 
-    <!-- HEADER -->
     <div class="header">
         <div class="header-logo"><img src="jeha-logo.png" alt="jeha. logo oficial"></div>
-        <div class="header-tagline">Confeitaria Artesanal & Funcional</div>
-        <div class="header-badge">
-            🌿 Sem glúten &nbsp;·&nbsp; Sem lactose &nbsp;·&nbsp; Sem açúcar
-        </div>
     </div>
 
-    <!-- INTRO -->
-    <div class="intro">
-        <p>Todos os produtos são feitos com ingredientes naturais, superalimentos e muita técnica de confeitaria funcional. Cada receita é pensada para proporcionar prazer real, sem abrir mão da saúde.</p>
-    </div>
+    <div class="page">
 
-    <!-- ═══ BOLOS ═══ -->
-    <div class="section-title">
-        <h2>Bolos</h2>
-        <div class="line"></div>
-    </div>
-    <div class="section-subtitle">Sem glúten · Sem lactose · Zero açúcar</div>
-
-    <div class="items">
-        <div class="item">
-            <div class="item-info">
-                <div class="item-name">Choco Protein</div>
-                <div class="item-desc">Massa fofinha feita com cacau 100% e whey protein e mix de farinhas sem glúten, sem lactose e zero açúcar. Finalizados com gotas de Dr.Peanut.</div>
-                <div class="item-tags"><span class="tag">Whey Protein</span><span class="tag">~320g</span></div>
+        <!-- TAGLINE + BADGE -->
+        <div style="text-align: center; padding: 0 24px; margin-top: -8px;">
+            <div class="header-tagline">Confeitaria Artesanal & Funcional</div>
+            <div class="header-badge">
+                Sem glúten &nbsp;·&nbsp; Sem lactose &nbsp;·&nbsp; Sem açúcar
             </div>
-            <div class="item-price">R$ 44,00</div>
         </div>
 
-        <div class="item">
-            <div class="item-info">
-                <div class="item-name">Choco Noir</div>
-                <div class="item-desc">Massa de sabor intenso de cacau 100% e mix de farinhas. Sem glúten, sem lactose e zero açúcar. Finalizado com uma ganache de chocolate.</div>
-                <div class="item-tags"><span class="tag">Cacau Intenso</span><span class="tag">~310g</span></div>
-            </div>
-            <div class="item-price">R$ 36,90</div>
+        <!-- NAVEGAÇÃO -->
+        <div class="nav-tabs no-print" style="margin-top: 16px;">
+            <a href="cardapio-jeha.html" class="nav-tab active">🌿 Saudáveis</a>
+            <a href="cardapio-tradicional.html" class="nav-tab">🎂 Tradicionais</a>
         </div>
 
-        <div class="item">
-            <div class="item-info">
-                <div class="item-name">Choco Free</div>
-                <div class="item-desc">Massa de cacau 100% e mix de farinhas sem glúten, sem oleaginosas, sem lactose e zero açúcar. Finalizado com ganache de chocolate.</div>
-                <div class="item-tags"><span class="tag">Sem Oleaginosas</span><span class="tag">~310g</span></div>
-            </div>
-            <div class="item-price">R$ 38,80</div>
+
+        <!-- ═══ BOLOS ═══ -->
+        <div class="section-title">
+            <h2>Bolos</h2>
+            <div class="line"></div>
         </div>
+        <div class="section-subtitle">Sem glúten · Sem lactose · Zero açúcar</div>
+
+        <div class="items">
+            <div class="item">
+                <div class="item-info">
+                    <div class="item-name">Choco Protein</div>
+                    <div class="item-desc">Massa fofinha feita com cacau 100% e whey protein e mix de farinhas sem
+                        glúten, sem lactose e zero açúcar. Finalizados com gotas de Dr.Peanut.</div>
+                    <div class="item-tags"><span class="tag">Whey Protein</span><span class="tag">~320g</span></div>
+                </div>
+                <div class="item-price">R$ 44,00</div>
+            </div>
+
+            <div class="item">
+                <div class="item-info">
+                    <div class="item-name">Choco Noir</div>
+                    <div class="item-desc">Massa de sabor intenso de cacau 100% e mix de farinhas. Sem glúten, sem
+                        lactose e zero açúcar. Finalizado com uma ganache de chocolate.</div>
+                    <div class="item-tags"><span class="tag">Cacau Intenso</span><span class="tag">~310g</span></div>
+                </div>
+                <div class="item-price">R$ 36,90</div>
+            </div>
+
+            <div class="item">
+                <div class="item-info">
+                    <div class="item-name">Choco Free</div>
+                    <div class="item-desc">Massa de cacau 100% e mix de farinhas sem glúten, sem oleaginosas, sem
+                        lactose e zero açúcar. Finalizado com ganache de chocolate.</div>
+                    <div class="item-tags"><span class="tag">Sem Oleaginosas</span><span class="tag">~310g</span></div>
+                </div>
+                <div class="item-price">R$ 38,80</div>
+            </div>
+        </div>
+
+        <!-- ═══ MUFFINS ═══ -->
+        <div class="section-title">
+            <h2>Muffins</h2>
+            <div class="line"></div>
+        </div>
+        <div class="section-subtitle">Porção individual · ~70g cada</div>
+
+        <div class="items">
+            <div class="item">
+                <div class="item-info">
+                    <div class="item-name">Muffin Choco Protein</div>
+                    <div class="item-desc">Massa fofinha feita com cacau 100% e whey protein e mix de farinhas sem
+                        glúten, sem lactose e zero açúcar. Finalizados com gotas de Dr.Peanut.</div>
+                    <div class="item-tags"><span class="tag">Whey Protein</span><span class="tag">Individual</span>
+                    </div>
+                </div>
+                <div class="item-price">R$ 14,00</div>
+            </div>
+
+            <div class="item">
+                <div class="item-info">
+                    <div class="item-name">Muffin Choco Noir</div>
+                    <div class="item-desc">Massa de sabor intenso de cacau 100% e mix de farinhas. Sem glúten, sem
+                        lactose e zero açúcar. Finalizado com uma ganache de chocolate.</div>
+                    <div class="item-tags"><span class="tag">Cacau Intenso</span><span class="tag">Individual</span>
+                    </div>
+                </div>
+                <div class="item-price">R$ 12,80</div>
+            </div>
+
+            <div class="item">
+                <div class="item-info">
+                    <div class="item-name">Muffin Choco Free</div>
+                    <div class="item-desc">Massa de cacau 100% e mix de farinhas sem glúten, sem oleaginosas, sem
+                        lactose e zero açúcar. Finalizado com ganache de chocolate.</div>
+                    <div class="item-tags"><span class="tag">Sem Oleaginosas</span><span class="tag">Individual</span>
+                    </div>
+                </div>
+                <div class="item-price">R$ 12,80</div>
+            </div>
+        </div>
+
+
+        <!-- FOOTER COM ÍCONES -->
+        <div style="padding: 14px 0 6px; margin-top: 8px;">
+            <div style="display: flex; justify-content: center; align-items: flex-start; gap: 26px; text-align: center;">
+                <div>
+                    <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(216,168,168,0.3); margin: 0 auto 6px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#D8A8A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <div style="font-size: 0.62rem; font-weight: 600; color: #5a4a3a; line-height: 1.35; white-space: nowrap;">Encomendas 24 horas<br><span style="font-size: 0.58rem; color: #889476;">de antecedência</span></div>
+                </div>
+                <div>
+                    <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(111,123,82,0.12); margin: 0 auto 6px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#6F7B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    </div>
+                    <div style="font-size: 0.62rem; font-weight: 600; color: #5a4a3a; line-height: 1.35; white-space: nowrap;">Frete<br><span style="font-size: 0.58rem; color: #889476;">a combinar</span></div>
+                </div>
+                <a href="https://instagram.com/cris.jeha" target="_blank" style="text-decoration: none;">
+                    <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(216,168,168,0.3); margin: 0 auto 6px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#D8A8A8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    </div>
+                    <div style="font-size: 0.62rem; font-weight: 600; color: #5a4a3a; line-height: 1.35; white-space: nowrap;">Instagram<br><span style="font-size: 0.58rem; color: #889476;">@cris.jeha</span></div>
+                </a>
+                <a href="https://wa.me/5524988488880" target="_blank" style="text-decoration: none;">
+                    <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(111,123,82,0.12); margin: 0 auto 6px; display: flex; align-items: center; justify-content: center;">
+                        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#6F7B52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    </div>
+                    <div style="font-size: 0.62rem; font-weight: 600; color: #5a4a3a; line-height: 1.35; white-space: nowrap;">WhatsApp<br><span style="font-size: 0.58rem; color: #889476;">24-98848-8880</span></div>
+                </a>
+            </div>
+        </div>
+
+        <!-- ASSINATURA -->
+        <div style="padding: 8px 20px 20px; text-align: center;">
+            <span style="font-family: 'Fraunces', serif; font-size: 0.78rem; color: #6F7B52;">jeha.</span>
+            <span style="font-size: 0.6rem; color: #6F7B52;">&nbsp;·&nbsp;Confeitaria Artesanal & Funcional&nbsp;·&nbsp;Barra da Tijuca, RJ&nbsp;·&nbsp;</span>
+            <span style="font-size: 0.6rem; color: #6F7B52; font-style: italic;">Doçura que faz bem</span>
+        </div>
+
     </div>
 
-    <!-- ═══ MUFFINS ═══ -->
-    <div class="section-title">
-        <h2>Muffins</h2>
-        <div class="line"></div>
-    </div>
-    <div class="section-subtitle">Porção individual · ~70g cada</div>
+    <!-- BOTÃO SALVAR PDF -->
+    <button class="print-btn no-print" onclick="window.print()">
+        🖨️ Salvar como PDF
+    </button>
 
-    <div class="items">
-        <div class="item">
-            <div class="item-info">
-                <div class="item-name">Muffin Choco Protein</div>
-                <div class="item-desc">Massa fofinha feita com cacau 100% e whey protein e mix de farinhas sem glúten, sem lactose e zero açúcar. Finalizados com gotas de Dr.Peanut.</div>
-                <div class="item-tags"><span class="tag">Whey Protein</span><span class="tag">Individual</span></div>
-            </div>
-            <div class="item-price">R$ 14,00</div>
-        </div>
-
-        <div class="item">
-            <div class="item-info">
-                <div class="item-name">Muffin Choco Noir</div>
-                <div class="item-desc">Massa de sabor intenso de cacau 100% e mix de farinhas. Sem glúten, sem lactose e zero açúcar. Finalizado com uma ganache de chocolate.</div>
-                <div class="item-tags"><span class="tag">Cacau Intenso</span><span class="tag">Individual</span></div>
-            </div>
-            <div class="item-price">R$ 12,80</div>
-        </div>
-
-        <div class="item">
-            <div class="item-info">
-                <div class="item-name">Muffin Choco Free</div>
-                <div class="item-desc">Massa de cacau 100% e mix de farinhas sem glúten, sem oleaginosas, sem lactose e zero açúcar. Finalizado com ganache de chocolate.</div>
-                <div class="item-tags"><span class="tag">Sem Oleaginosas</span><span class="tag">Individual</span></div>
-            </div>
-            <div class="item-price">R$ 12,80</div>
-        </div>
-    </div>
-
-    <!-- OBS -->
-    <div class="obs">
-        <p>* Todos os produtos são artesanais, sem glúten, sem lactose e sem açúcar. Feitos sob encomenda. Consulte disponibilidade e prazo de entrega.</p>
-    </div>
-
-    <!-- FOOTER -->
-    <div class="footer">
-        <div class="footer-text">
-            <strong>jeha.</strong> — Confeitaria Artesanal & Funcional<br>
-            Barra da Tijuca, Rio de Janeiro · RJ<br>
-            <em style="font-size:0.68rem; color:#bbb;">Doçura que faz bem 🌿</em>
-        </div>
-        <div class="footer-contact">
-            📱 (24) 98848-8880<br>
-            <a href="https://instagram.com/cris.jeha">@cris.jeha</a><br>
-            <a href="https://crisjeha.netlify.app">crisjeha.netlify.app</a>
-        </div>
-    </div>
-
-</div>
-
-<!-- BOTÃO SALVAR PDF -->
-<button class="print-btn no-print" onclick="window.print()">
-    🖨️ Salvar como PDF
-</button>
-
-<a href="index.html" class="back-btn no-print">
-    ← Voltar ao App
-</a>
+    <a href="index.html" class="back-btn no-print">
+        ← Voltar ao App
+    </a>
 
 </body>
+
 </html>

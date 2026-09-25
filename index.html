@@ -592,6 +592,119 @@
             font-weight: 500;
         }
 
+        /* ===== ABA TRADICIONAIS: Formatos + Monte seu bolo ===== */
+        .trad-section-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--verde-escuro);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin: 4px 0 10px;
+        }
+
+        .trad-section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(111, 123, 82, 0.15);
+        }
+
+        .format-card {
+            background: linear-gradient(135deg, rgba(111, 123, 82, 0.06), rgba(216, 168, 168, 0.08));
+            border: 1.5px solid rgba(216, 168, 168, 0.3);
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 10px;
+        }
+
+        .format-card-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .format-card-name {
+            font-family: 'Fraunces', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--verde-escuro);
+        }
+
+        .format-card-sizes {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .size-badge {
+            font-size: 0.62rem;
+            color: #889476;
+            font-weight: 600;
+            background: rgba(111, 123, 82, 0.08);
+            padding: 2px 9px;
+            border-radius: 100px;
+            border: 1px solid rgba(111, 123, 82, 0.2);
+        }
+
+        .format-card-desc {
+            font-size: 0.72rem;
+            color: #727c62;
+        }
+
+        .trad-choice-group {
+            margin-bottom: 16px;
+        }
+
+        .trad-choice-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .trad-pill {
+            font-size: 0.72rem;
+            color: var(--verde-escuro);
+            padding: 6px 13px;
+            background-color: rgba(216, 168, 168, 0.1);
+            border: 1.5px solid rgba(216, 168, 168, 0.3);
+            border-radius: 100px;
+        }
+
+        .trad-note {
+            margin-top: 4px;
+            padding: 14px 16px;
+            border: 1.5px dashed rgba(111, 123, 82, 0.35);
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(111, 123, 82, 0.06), rgba(216, 168, 168, 0.08));
+            font-size: 0.75rem;
+            color: #555;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .trad-note strong {
+            color: var(--verde-escuro);
+        }
+
+        .trad-whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding: 12px;
+            background-color: var(--verde-escuro);
+            color: #fff;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
         /* Lista de Itens */
         .menu-items {
             display: flex;
@@ -1227,6 +1340,7 @@
             <div class="format-tabs" id="format-tabs">
                 <button class="format-tab-btn active" data-format="bolos">Bolos</button>
                 <button class="format-tab-btn" data-format="muffins">Muffins</button>
+                <button class="format-tab-btn" data-format="tradicionais">Tradicionais</button>
             </div>
 
             <!-- Dimensão do formato -->
@@ -1391,6 +1505,19 @@
             }
         };
 
+        // Dados do bolo tradicional (monte o seu) — sem preço fixo, sob consulta
+        const TRADICIONAL = {
+            nome: 'Bolos Tradicionais',
+            dimensao: 'Monte o bolo do seu jeito',
+            formatos: [
+                { icone: '🍰', nome: 'Caseiro', tamanhos: ['22cm'], desc: 'Massa + recheio' },
+                { icone: '🎂', nome: 'Bolo de Festa', tamanhos: ['15cm', '20cm', '25cm'], desc: 'Massa + recheio + cobertura' }
+            ],
+            massas: ['Baunilha', 'Chocolate', 'Cenoura', 'Laranja'],
+            recheios: ['Brigadeiro', 'Brigadeiro branco', 'Doce de leite', 'Beijinho', 'Nozes', 'Prestígio', 'Oreo', 'Ninho', 'Abacaxi', 'Morango'],
+            coberturas: ['Ganache de chocolate', 'Ganache de chocolate branco', 'Chantininho']
+        };
+
         // ══════ Estado do App ══════
         let cart = {};
         let currentFormat = 'bolos';
@@ -1533,9 +1660,18 @@
 
         // ══════ Renderiza Sabores ══════
         function renderItems() {
+            if (currentFormat === 'tradicionais') {
+                renderTradicionais();
+                return;
+            }
+
             const fmt = FORMATOS[currentFormat];
             const list = fmt.sabores;
             menuItemsList.innerHTML = '';
+
+            // Reexibe o slider (pode ter sido escondido pela aba Tradicionais)
+            const heroSlider = document.getElementById('menu-hero-slider');
+            if (heroSlider) heroSlider.style.display = '';
 
             // Mostra dimensão do formato
             const dimEl = document.getElementById('format-dimension');
@@ -1575,6 +1711,74 @@
                 `;
                 menuItemsList.appendChild(itemDiv);
             });
+        }
+
+        // ══════ Renderiza Aba Tradicionais (monte seu bolo, sem preço fixo) ══════
+        function renderTradicionais() {
+            menuItemsList.innerHTML = '';
+
+            const dimEl = document.getElementById('format-dimension');
+            if (dimEl) dimEl.textContent = `📐 ${TRADICIONAL.dimensao}`;
+
+            // Esconde o slider de fotos (linha não tem fotos próprias cadastradas)
+            if (sliderInterval) clearInterval(sliderInterval);
+            const heroSlider = document.getElementById('menu-hero-slider');
+            if (heroSlider) heroSlider.style.display = 'none';
+
+            const wrap = document.createElement('div');
+
+            const formatosLabel = document.createElement('div');
+            formatosLabel.className = 'trad-section-label';
+            formatosLabel.textContent = 'Formatos';
+            wrap.appendChild(formatosLabel);
+
+            TRADICIONAL.formatos.forEach(f => {
+                const card = document.createElement('div');
+                card.className = 'format-card';
+                card.innerHTML = `
+                    <div class="format-card-header">
+                        <span>${f.icone}</span>
+                        <span class="format-card-name">${f.nome}</span>
+                        <div class="format-card-sizes">${f.tamanhos.map(t => `<span class="size-badge">${t}</span>`).join('')}</div>
+                    </div>
+                    <div class="format-card-desc">${f.desc}</div>
+                `;
+                wrap.appendChild(card);
+            });
+
+            const escolhaLabel = document.createElement('div');
+            escolhaLabel.className = 'trad-section-label';
+            escolhaLabel.style.marginTop = '18px';
+            escolhaLabel.textContent = 'Escolha seu bolo';
+            wrap.appendChild(escolhaLabel);
+
+            [
+                { titulo: 'Massas', itens: TRADICIONAL.massas },
+                { titulo: 'Recheios', itens: TRADICIONAL.recheios },
+                { titulo: 'Coberturas', itens: TRADICIONAL.coberturas }
+            ].forEach(grupo => {
+                const group = document.createElement('div');
+                group.className = 'trad-choice-group';
+                group.innerHTML = `
+                    <div class="trad-section-label" style="margin-bottom:8px;">${grupo.titulo}</div>
+                    <div class="trad-choice-pills">${grupo.itens.map(i => `<span class="trad-pill">${i}</span>`).join('')}</div>
+                `;
+                wrap.appendChild(group);
+            });
+
+            const note = document.createElement('div');
+            note.className = 'trad-note';
+            note.innerHTML = `📋 <strong>Mínimo 24 horas de antecedência</strong><br>Frete a combinar · Consulte preços e disponibilidade`;
+            wrap.appendChild(note);
+
+            const waLink = document.createElement('a');
+            waLink.className = 'trad-whatsapp-btn';
+            waLink.target = '_blank';
+            waLink.href = `https://wa.me/5524988488880?text=${encodeURIComponent('Olá Cris! Quero montar um bolo tradicional (massa + recheio + cobertura). Pode me ajudar?')}`;
+            waLink.innerHTML = `Montar pelo WhatsApp`;
+            wrap.appendChild(waLink);
+
+            menuItemsList.appendChild(wrap);
         }
 
         // ══════ Atualiza Quantidade na Sacola ══════

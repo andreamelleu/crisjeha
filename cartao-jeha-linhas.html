@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartão jeha. — Linhas de Bolos</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    :root {
+        --verde: #6F7B52;
+        --rosa: #D8A8A8;
+        --escuro: #2d2d2d;
+    }
+
+    html, body {
+        background: #e8e0d8;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Cartão — 10cm x 18cm a 300dpi = 1181 x 2126 px */
+    .card {
+        width: 1181px;
+        height: 2126px;
+        position: relative;
+        overflow: hidden;
+        background-color: #f5ece4;
+    }
+
+    .card img.bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        z-index: 0;
+    }
+
+    .card-content {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 130px 90px 100px;
+        text-align: center;
+    }
+
+    .logo {
+        width: 580px;
+        height: auto;
+        object-fit: contain;
+        margin-bottom: 30px;
+    }
+
+    .tagline {
+        font-size: 34px;
+        font-weight: 600;
+        color: var(--verde);
+        letter-spacing: 0.02em;
+        line-height: 1.4;
+        margin-bottom: 110px;
+        padding: 0 30px;
+    }
+
+    .qr-wrap {
+        background: #fff;
+        border-radius: 24px;
+        padding: 32px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        margin-bottom: 64px;
+    }
+
+    .qr-wrap img {
+        display: block;
+        width: 460px;
+        height: 460px;
+    }
+
+    .cta-text {
+        font-size: 34px;
+        font-weight: 500;
+        color: var(--escuro);
+        line-height: 1.45;
+        margin-bottom: auto;
+        padding: 0 20px;
+    }
+
+    .footer-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        margin-top: 56px;
+    }
+
+    .footer-line {
+        font-size: 36px;
+        font-weight: 700;
+        color: var(--escuro);
+    }
+
+    .footer-line.insta {
+        font-size: 32px;
+        font-weight: 600;
+    }
+
+    .footer-sub {
+        font-size: 26px;
+        font-weight: 500;
+        color: #6b6b6b;
+        margin-top: 18px;
+        line-height: 1.5;
+    }
+
+    /* Botão fora do cartão, só na tela */
+    .no-print {
+        text-align: center;
+        margin-top: 24px;
+    }
+
+    .print-btn {
+        background: var(--verde);
+        color: #fff;
+        border: none;
+        padding: 14px 24px;
+        border-radius: 100px;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="card" id="card">
+    <img class="bg" src="fundo-pdf.jpg" alt="">
+    <div class="card-content">
+        <img class="logo" src="jeha-logo.png" alt="jeha. logo oficial">
+
+        <div class="tagline">Confeitaria Artesanal,<br>Funcional e Tradicional</div>
+
+        <div class="qr-wrap">
+            <img src="qr-verde-transparente.png" alt="QR Code cardápio jeha.">
+        </div>
+
+        <div class="cta-text">Acesse o cardápio digital,<br>conheça e faça o seu pedido!</div>
+
+        <div class="footer-block">
+            <div class="footer-line">WhatsApp 24-98848-8880</div>
+            <div class="footer-line insta">Instagram cris.jeha</div>
+            <div class="footer-sub">Barra da Tijuca, RJ</div>
+        </div>
+    </div>
+</div>
+
+<div class="no-print">
+    <button class="print-btn" onclick="window.print()">🖨️ Imprimir / Salvar PDF</button>
+</div>
+
+</body>
+</html>
